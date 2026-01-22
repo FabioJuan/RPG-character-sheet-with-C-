@@ -1,0 +1,7 @@
+0;1;fabill;paladinho;humano;criador dessa budega
+1;1;lucas;paladinho;humano;criador dessa budega
+2;1;victor;paladinho;humano;criador dessa budega
+3;1;matheus;paladinho;humano;criador dessa budega
+5;1;juh;paladinho;humano;criador dessa budega
+6;1;amanda;paladinho;humano;criador dessa budega
+7;1;maria;paladinho;humano;criador dessa budega
