@@ -1,79 +1,53 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include "pstatus.hpp"
+
 using namespace std;
 
-int add_ficha(){
+status padrao(status Spadrao){
+    Spadrao.hp = 20;
+    Spadrao.hp_atual = 20;
+    Spadrao.lv = 20;
+    Spadrao.xp = 0;
+    Spadrao.xp_next_lv = 100;
+    Spadrao.def = 10;
+    Spadrao.atk = 10;
+    Spadrao.carisma = 15;
+    Spadrao.inteligencia = 15;
+    Spadrao.percepcao = 15;
+    return Spadrao;
+}
 
-    int id = 0,level = 1;
-    //dados do usuario
-    string nome,classe,raca,descricao,sexo;
-    //o usuario insere os dados 
-    cout << "digite seu nome: ";
-    cin >> nome;
-    
-    cout << "digite sua classe: ";
-    cin >> classe;
-    
-    cout << "digite sua raça: ";
-    cin >> raca;
-    //string com palavras com espaço
-    cout << "descreva a si mesmo: ";
-    cin.ignore();
-    getline(cin, descricao);
-    //verifica se o valor inserido é valido
-    while ((sexo != "F" and sexo != "f") and (sexo != "M" and sexo != "m") and (sexo != "N" and sexo != "n") )
+
+
+int cadastro_ficha(){
+    status n_status = padrao(n_status);
+    personagem jogador;
+    printf("digite o seu nome:");
+    cin >> jogador.nome;
+
+    printf("\n","digite o sua idade:");
+    cin >> jogador.idade;
+
+    printf("\n","digite o sua classe:");
+    cin >> jogador.classe;
+
+    printf("\n","digite o sua raça:");
+    cin >> jogador.raca;
+
+    printf("\n","digite sua historia:");
+    getline(cin,jogador.descricao);
+
+    printf("\n","digite o seu nome:");
+    cin >> jogador.sexo;
+
+    while (jogador.sexo != "f" and jogador.sexo != "F" and jogador.sexo != "m" and jogador.sexo != "M" and jogador.sexo != "n" and jogador.sexo != "N")
     {
-        cout << "digite seu sexo (F/M/N): ";
-        cin >> sexo;
+        cin >> jogador.sexo;
     }
-    //abre o arquivo do novo jogador 
-    ofstream novo_j("novo_jogador.txt");
-
-    if(novo_j.is_open()){
-        //incere os dados no arquivo
-        novo_j <<id << ";" << level <<";"<< nome <<";"<< classe <<";"<< raca <<";"<< descricao;
-        //fecha o arquivo 
-        novo_j.close();
-    }
-    cout <<"dados gravados com sucesso";
-    cin.ignore();
-    cin.get();
-
-    //atribui o valor da linha do novo jogador a uma string
-    ifstream j_novo("novo_jogador.txt");
-    string novojogador;
-    getline(j_novo,novojogador);
-    j_novo.close();
-    cin.ignore();
-
-    ifstream todos_jogadores("fichas.txt");
-    string fichas;
-    int n_jogadores = 0;
-    string jogadores_anteriores[n_jogadores];
-    if(todos_jogadores.is_open()){
-        while (getline(todos_jogadores,fichas))
-        {
-            jogadores_anteriores[n_jogadores] = fichas;
-            cout << jogadores_anteriores[n_jogadores];
-            n_jogadores++;
-        }
-    }else{
-        cout << "erro, não conseguimos encontrar os dados dos jogadores anteriores ";
-    }
-    cout << n_jogadores;
-
-    for(int i = 0; i<n_jogadores;i++){
-        cout<<jogadores_anteriores[i];
-    }
-    todos_jogadores.close();
+    jogador.persona_s = n_status;
     
-    ofstream addjogador("fichas.txt");
-    addjogador << "arq modificado";
-    for(int i = 0;i < n_jogadores-4;i++){
-        cout<<jogadores_anteriores[i]<<"\n";
-    }
-    addjogador.close();
-    return 0;
 }
 
 
@@ -90,7 +64,7 @@ int menu(){
     switch (tela)
     {
     case 1:
-        add_ficha();
+        
         break;
     
     default:
@@ -100,13 +74,8 @@ int menu(){
 }
 int main(){
     int n_jogadores = 1;
-    //dados dos jogadores 
-    //int id[n_jogadores];
-    //int nivel[n_jogadores];
-    string nome[n_jogadores];
-    string classe[n_jogadores];
-    string raca[n_jogadores];
-    string descricao[n_jogadores];
+    personagem jogador[n_jogadores];
+    
     menu();
     return 0;
 }
