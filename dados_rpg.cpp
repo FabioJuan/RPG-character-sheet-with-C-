@@ -21,7 +21,7 @@ status padrao(status Spadrao){
 
 
 
-int cadastro_ficha(){
+personagem cadastro_ficha(){
     status n_status = padrao(n_status);
     personagem jogador;
     printf("digite o seu nome:");
@@ -48,7 +48,10 @@ int cadastro_ficha(){
     }
     jogador.persona_s = n_status;
     
+
+    return jogador;
 }
+
 
 
 int menu(){
