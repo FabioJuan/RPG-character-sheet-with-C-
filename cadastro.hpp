@@ -1,7 +1,7 @@
 #ifndef CADASTRO_HPP
 #define CADASTRO_HPP
 #include <iostream>
-#include "pstatus.hpp"
+#include "personagens.hpp"
 
 
 using namespace std;
@@ -23,6 +23,7 @@ status padrao(status Spadrao){
 personagem cadastro_ficha(){
     status n_status = padrao(n_status);
     personagem c_jogador;
+    
     printf("digite o seu nome:");
     cin >> c_jogador.nome;
 
