@@ -2,6 +2,7 @@
 #define vetor_hpp
 
 #include <iostream>
+#include <fstream>
 #include "personagens.hpp"
 
 using namespace std;
@@ -10,16 +11,25 @@ class Vetor {
     private:
     personagem* m_personagens;//parametros do array 
     int m_tamanho;//parametro do tamanho
-    int position;
+    int position;//posição atua do vetor 
 
     void le_arquivo(){
         //le o arquivo principal de todos os personagens
     }
     void backup(){
         //escreve em um outro arquivo todos os personagens no arquivo principal e backup
+
+    }
+    
+    void aumenta_vetor(){
+        m_tamanho++;
+    }
+    void novo_vetor(){
+        
+        //atualiza o vetor 
     }
     public:
-    Vetor::Vetor(personagem* personagens, int tamanho, int pos): m_personagens(personagens), m_tamanho(tamanho), position(pos) {}
+    Vetor(personagem* personagens, int tamanho, int pos): m_personagens(personagens), m_tamanho(tamanho), position(pos) {}
     
 
 
@@ -39,22 +49,23 @@ class Vetor {
     }
     personagem cadasdastro(){
         personagem novo_jogador;
-        printf("digite o seu nome:");
+        cout<<"digite o seu nome:";
         cin >> novo_jogador.nome;
 
-        printf("\n","digite o sua idade:");
+        cout<<endl <<"digite o sua idade:";
         cin >> novo_jogador.idade;
 
-        printf("\n","digite o sua classe:");
+        cout<<endl<<"digite o sua classe:";
         cin >> novo_jogador.classe;
 
-        printf("\n","digite o sua raça:");
+        cout<<endl<<"digite o sua raça:";
         cin >> novo_jogador.raca;
 
-        printf("\n","digite sua historia:");
+        cout<<endl<<"digite sua historia:";
+        cin.ignore();
         getline(cin,novo_jogador.descricao);
 
-        printf("\n","digite o seu nome:");
+        cout<<endl<<"digite o seu sexo:";
         cin >> novo_jogador.sexo;
 
         padrao(novo_jogador.persona_s);
@@ -95,7 +106,6 @@ class Vetor {
 
     void remove() {
         imprime_jogadores();
-    //criar a função que remove um personagem pelo id 
         position--;
     } 
 

@@ -15,16 +15,15 @@ int menu(){
     cout <<"(2)remover ficha"<<"\n";
     cout <<"(3)buscar jogador"<<"\n";
     cout <<"(4)listar jogares"<<"\n";
+    return 0;
 }
 int main(){
-    int n_jogadores = 1;
+    int n_jogadores = 0;
     int position  = 0;
     int tela = 0;
+    menu();
     personagem *jogadores = new personagem[n_jogadores];// vetor dimanico 
     Vetor personagens = Vetor(jogadores, n_jogadores, position);//o array jogadores recebe uma classe 
-    personagens.imprime_jogadores();
-    menu();
-
     cin >> tela;
     switch (tela)
     {
