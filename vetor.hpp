@@ -80,11 +80,19 @@ class Vetor {
         return novo_jogador;
 
     }
-    void add_lista(){
-        personagem novo_personagem = cadasdastro();
+    string add_lista(){
+        personagem novo_personagem = cadasdastro();//faz o cadastro do novo personagem e retorna na variavel;
+        string s_novopersonagem;
+        //adiciona o novo personagem em um arquivo 
+        ofstream novo_("./src/novo.txt");
+        novo_ << novo_personagem.id<< ";"<<novo_personagem.nome<<";"<<novo_personagem.raca<<";"<<novo_personagem.sexo<<";"<<novo_personagem.idade<<";"<<novo_personagem.descricao;
+        novo_.close();
+        //coloca o personagem em uma string 
+        ifstream le_novo("./src/novo.txt");
+        getline(le_novo,s_novopersonagem);
+        le_novo.close();
         //fazer o vetor aumentar de tamanho caso ele n tenha mais espaço se não somente colocar na proxima posição
-        position++;
-
+        return s_novopersonagem;
     }
     void imprime_jogadores() {
         cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#";
