@@ -7,6 +7,7 @@
 using namespace std;   
 
 void menu(){
+    system("clear");
     int tela = 0;
     const std::string titulo = "\
          _         _                                                           \n\
@@ -20,13 +21,14 @@ void menu(){
 ";
     cout << titulo;
 
-    cout <<"(1)adicionar ficha"<<"\n";
-    cout <<"(2)remover ficha"<<"\n";
-    cout <<"(3)buscar jogador"<<"\n";
-    cout <<"(4)listar jogares"<<"\n";
+    cout <<"                                (1)adicionar ficha"<<"\n";
+    cout <<"                                (2)remover ficha"<<"\n";
+    cout <<"                                (3)buscar ficha"<<"\n";
+    cout <<"                                (4)listar ficha"<<"\n";
+    cout <<"                                (5)fechar progama"<<"\n";
 }
 int main(){
-    int n_jogadores = 0;
+    int n_jogadores = 1;
     int position  = 0;
     int tela = 0;
     bool rodando = true;
@@ -39,30 +41,29 @@ int main(){
         switch (tela)
         {
             case 1: 
-            personagens.add_lista();
+                personagens.add_lista();
                 break;
-                case 2:
+            case 2:
                 personagens.remove();
                 break;
-                case 3:
+            case 3:
+                //buscar ficha
+                personagens.ln();
                 break;
-                case 4 :
+            case 4 :
                 personagens.imprime_jogadores();
                 break;
-                case 5:
+            case 5:
                 rodando = false;
                 break;
-                default:
-                
+            default:
+                menu();
+                cin >> tela;
                 break;
             }
-            system("clear");
             menu();
             cin >> tela;
         }
         
-    
-
-
     return 0;
 }

@@ -14,11 +14,21 @@ class Vetor {
     int position;//posição atua do vetor 
 
     void le_arquivo(){
-        //le o arquivo principal de todos os personagens
+        
     }
     void backup(){
         //escreve em um outro arquivo todos os personagens no arquivo principal e backup
-
+    }
+    int conta_linhas(){
+        int linhas = 0;
+        string cont;
+        ifstream arq("./src/fichas.txt");
+        while (getline(arq,cont))
+        {
+            linhas++;
+        }
+        arq.close();
+        return linhas;
     }
     
     void aumenta_vetor(){
@@ -50,16 +60,19 @@ class Vetor {
     personagem cadasdastro(){
         personagem novo_jogador;
         cout<<"digite o seu nome:";
-        cin >> novo_jogador.nome;
+        cin.ignore();
+        getline(cin,novo_jogador.nome);
 
         cout<<endl <<"digite o sua idade:";
         cin >> novo_jogador.idade;
 
         cout<<endl<<"digite o sua classe:";
-        cin >> novo_jogador.classe;
+        cin.ignore();
+        getline(cin,novo_jogador.classe);
 
         cout<<endl<<"digite o sua raça:";
-        cin >> novo_jogador.raca;
+        cin.ignore();
+        getline(cin,novo_jogador.raca);
 
         cout<<endl<<"digite sua historia:";
         cin.ignore();
@@ -110,7 +123,10 @@ class Vetor {
         }
         return len;
     }
-
+    void ln(){
+        
+        cout << conta_linhas();
+    }
 
     void remove() {
         imprime_jogadores();
