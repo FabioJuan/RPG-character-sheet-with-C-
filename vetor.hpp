@@ -10,14 +10,37 @@ using namespace std;
 class Vetor {
     private:
     personagem* m_personagens;//parametros do array 
-    int m_tamanho;//parametro do tamanho
+    int m_tamanho  = 70;//parametro do tamanho
     int position;//posição atua do vetor 
 
-    void le_arquivo(){
-        
+
+    void atualiza_vetor(){
+        int novo_tamanho = m_tamanho + 10;
+        m_personagens = new personagem[m_tamanho];
+        personagem* novo_vetor = new personagem [novo_tamanho];
+
+        for(int i = 0; i < m_tamanho; i++){
+            novo_vetor[i] = m_personagens[i];
+        }
+        delete[] m_personagens;
+        m_personagens = novo_vetor;
+        m_tamanho = novo_tamanho;
     }
-    void backup(){
-        //escreve em um outro arquivo todos os personagens no arquivo principal e backup
+
+    void add_em_vetor(){
+        ifstream fichas("./src/fichas.txt");
+        int tamanho_linhas = conta_linhas();
+        string dado;
+        for(int i = 0 ;i < tamanho_linhas; i++){
+            if(position == m_tamanho){//atualiza o vetor se necessario
+            atualiza_vetor();
+            }
+            while(getline(fichas,dado,';')){
+                
+            }
+
+        }
+            
     }
     int conta_linhas(){
         int linhas = 0;
@@ -28,16 +51,10 @@ class Vetor {
             linhas++;
         }
         arq.close();
+        position = linhas -1;
         return linhas;
     }
     
-    void aumenta_vetor(){
-        m_tamanho++;
-    }
-    void novo_vetor(){
-        
-        //atualiza o vetor 
-    }
     public:
     Vetor(personagem* personagens, int tamanho, int pos): m_personagens(personagens), m_tamanho(tamanho), position(pos) {}
     
@@ -111,8 +128,7 @@ class Vetor {
         cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#";
         
         for(int i = 0;i <= m_tamanho;i++){
-            cout << m_personagens[i].id << m_personagens[i].nome << m_personagens[i].classe << m_personagens[i].raca<< m_personagens[i].sexo << m_personagens[i].idade << m_personagens[i].descricao;
-        
+            cout <<"id: "<<m_personagens[i].id <<" nome: "<< m_personagens[i].nome <<" classe: "<< m_personagens[i].classe <<" raça: "<< m_personagens[i].raca<<" sexo"<<m_personagens[i].sexo <<" idade: "<< m_personagens[i].idade<<" level"<<m_personagens[i].persona_s.lv<<" descrição: "<< m_personagens[i].descricao;
         }
     }
 
