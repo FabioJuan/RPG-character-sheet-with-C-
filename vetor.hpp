@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "personagens.hpp"
 
 using namespace std;
@@ -10,13 +11,34 @@ using namespace std;
 class Vetor {
     private:
     personagem* m_personagens;//parametros do array 
-    int m_tamanho  = 70;//parametro do tamanho
-    int position;//posição atua do vetor 
+    int m_tamanho  = 20;//parametro do tamanho
+    int position = 0 ;//posição atua do vetor 
 
+    personagem atribui_x( string &linha){
+        personagem personaI;
+        stringstream linhaI(linha);
+        string dado;
+        getline(linhaI,dado,';');
+        personaI.id = stoi(dado);
+
+        getline(linhaI,personaI.nome,';');
+        getline(linhaI,personaI.classe,';');
+        getline(linhaI,personaI.raca,';');
+        getline(linhaI,personaI.sexo,';');
+        
+        getline(linhaI,dado,';');
+        personaI.idade =stoi(dado);
+
+        getline(linhaI,dado,';');
+        personaI.persona_s.lv =  stoi(dado);
+
+        getline(linhaI,personaI.descricao);
+
+        return personaI;
+    }
 
     void atualiza_vetor(){
         int novo_tamanho = m_tamanho + 10;
-        m_personagens = new personagem[m_tamanho];
         personagem* novo_vetor = new personagem [novo_tamanho];
 
         for(int i = 0; i < m_tamanho; i++){
@@ -27,38 +49,43 @@ class Vetor {
         m_tamanho = novo_tamanho;
     }
 
-    void add_em_vetor(){
-        ifstream fichas("./src/fichas.txt");
-        int tamanho_linhas = conta_linhas();
-        string dado;
-        for(int i = 0 ;i < tamanho_linhas; i++){
-            if(position == m_tamanho){//atualiza o vetor se necessario
-            atualiza_vetor();
-            }
-            while(getline(fichas,dado,';')){
-                
-            }
-
-        }
-            
-    }
-    int conta_linhas(){
-        int linhas = 0;
-        string cont;
+    void recebe(){
+        position = 0;
+        string linhas;
         ifstream arq("./src/fichas.txt");
-        while (getline(arq,cont))
-        {
-            linhas++;
+        if(!arq.is_open()){
+            cout <<"erro ao abrir o arquivo"<<endl;
+            return;
+        }
+        while(getline(arq,linhas)){
+            m_personagens[position] = atribui_x(linhas);
+            position++;
+            if(position == m_tamanho){
+                atualiza_vetor();
+            }    
         }
         arq.close();
-        position = linhas -1;
-        return linhas;
-    }
+
+}
+    
     
     public:
     Vetor(personagem* personagens, int tamanho, int pos): m_personagens(personagens), m_tamanho(tamanho), position(pos) {}
-    
 
+
+    void escreve_lista(){
+        ofstream arq_atualizaso("n.txt");
+        string linha;
+        int i;
+       
+             arq_atualizaso<< m_personagens[0].id<< ";"<<m_personagens[0].nome<<";"<<m_personagens[0].raca<<";"<<m_personagens[0].sexo<<";"<<m_personagens[0].idade<<";"<<m_personagens[0].descricao<< endl;
+        arq_atualizaso.close();
+    }
+
+
+    void inicializa(){
+        recebe();
+    }
 
     status padrao(status Spadrao){
         //status padrão de um novo personagem level 1 
@@ -76,6 +103,7 @@ class Vetor {
     }
     personagem cadasdastro(){
         personagem novo_jogador;
+        novo_jogador.id = position;
         cout<<"digite o seu nome:";
         cin.ignore();
         getline(cin,novo_jogador.nome);
@@ -110,8 +138,34 @@ class Vetor {
         return novo_jogador;
 
     }
-    string add_lista(){
+    void add_lista(){
         personagem novo_personagem = cadasdastro();//faz o cadastro do novo personagem e retorna na variavel;
+        int ultimo_p = position;
+        if(position +1 >= m_tamanho ){
+            atualiza_vetor();
+            m_personagens[ultimo_p] = novo_personagem;
+        }else{
+            m_personagens[ultimo_p] = novo_personagem;
+        }
+        position++;
+    }
+    void imprime_jogadores() {
+        int voltar = -2;
+        cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#"<<endl;
+        
+        for(int i = 0;i < m_tamanho;i++){
+            cout <<"|id: "<<m_personagens[i].id <<" |nome: "<< m_personagens[i].nome <<" |classe: "<< m_personagens[i].classe <<" |raça: "<< m_personagens[i].raca<<" |sexo: "<<m_personagens[i].sexo <<" |idade: "<< m_personagens[i].idade<<" |level: "<<m_personagens[i].persona_s.lv<<" |descrição: "<< m_personagens[i].descricao<<endl;
+        }
+        while(voltar !=-1)
+        {
+            cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
+            cin >> voltar;
+        }
+        
+    }
+
+};
+/*
         string s_novopersonagem;
         //adiciona o novo personagem em um arquivo 
         ofstream novo_("./src/novo.txt");
@@ -120,35 +174,9 @@ class Vetor {
         //coloca o personagem em uma string 
         ifstream le_novo("./src/novo.txt");
         getline(le_novo,s_novopersonagem);
-        le_novo.close();
+        
         //fazer o vetor aumentar de tamanho caso ele n tenha mais espaço se não somente colocar na proxima posição
         return s_novopersonagem;
-    }
-    void imprime_jogadores() {
-        cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#";
-        
-        for(int i = 0;i <= m_tamanho;i++){
-            cout <<"id: "<<m_personagens[i].id <<" nome: "<< m_personagens[i].nome <<" classe: "<< m_personagens[i].classe <<" raça: "<< m_personagens[i].raca<<" sexo"<<m_personagens[i].sexo <<" idade: "<< m_personagens[i].idade<<" level"<<m_personagens[i].persona_s.lv<<" descrição: "<< m_personagens[i].descricao;
-        }
-    }
-
-    int ultimo_elemento(){
-        int len = 0;        
-        for(int i = 0;i <= m_tamanho;i++){
-            len++;                
-        }
-        return len;
-    }
-    void ln(){
-        
-        cout << conta_linhas();
-    }
-
-    void remove() {
-        imprime_jogadores();
-        position--;
-    } 
-
-};
+*/
 
 #endif

@@ -1,4 +1,3 @@
-#id# #nome# #clase# #raça# #sexo# #idade# #level #descrição# 
 8;Alucard;Vampiro;Andarilho;M;597;99;Procura um oponente digno. 
 9;Geralt;Bruxo;Mutante;M;95;50;Caçador de monstros profissional. 
 10;Legolas;Arqueiro;Elfo;M;2931;45;Mestre das flechas de precisão. 
