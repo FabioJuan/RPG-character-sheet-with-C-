@@ -1,0 +1,59 @@
+8;Espada Espada de Casull;Manto de Alucard;Anel de Prata
+9;Espada de Prata;Armadura de Couro de Grifo;Medalhão do Lobo
+10;Arco Galadhrim;Túnica de Mirkwood;Carcás de Flechas Infinitas
+11;Sabre de Luz Azul;Túnica Jedi;Cristal Kyber
+12;Espada de Benizakura;Armadura da Roda do Céu;Amuleto do Reequipamento
+13;Shusui e Wado Ichimonji;Roupão de Katanas;Haramaki de Combate
+14;Bengala de Gimerstick;Manto do Conselho Jedi;Holocron da Força
+15;Martelo da Perdição;Armadura de Placas de Orgrimmar;Totem Elemental
+16;Zirael (Espada de Prata);Colete de Couro de Cintra;Ampulheta de Areia
+17;Sabres de Luz Duplos;Traje de Padawan;Contas de Trança
+18;Espada Mestra;Escudo Hylian;Ocarina do Tempo
+19;Cetro de Galadriel;Vestido de Lothlórien;Frasco de Galadriel
+20;Machado de Retribuição;Peitoral de Ferro;Cinto de Força de Gigante
+21;Rifle Amban;Armadura de Beskar;Jetpack Mandaloriano
+22;Luvas de Couro;Veste de Couro;Pulseira de Materia
+23;Machado de Batalha;Cota de Malha de Mithril;Elmo de Erebor
+24;Cetro de Madeira;Capa de Mago;Chapéu de Bruxa
+25;Sabre de Luz de Obi-Wan;Túnica de Mestre Jedi;Protetor de Pulso
+26;Maça de Sauron;Armadura de Placas Negras;O Um Anel
+27;Adaga Élfica;Vestido de Rivendell;Estrela da Tarde (Evenstar)
+28;Carabina EE-3;Armadura Mandaloriana;Capacete de Caçador
+29;Nichirin Preta;Uniforme de Caçador;Brincos de Hanafuda
+30;Gélida (Frostmourne);Armadura de Placas de Gelo;Coroa da Perdição
+31;Cetro da Natureza;Manto Elemental;Tiara de Antlers
+32;Blaster DL-44;Colete de Contrabandista;Dados de Sorte
+33;Lâminas Duplas;Uniforme Militar;Dispositivo de Manobra 3D
+34;Faca de Cozinha;Fronha de Travesseiro;Meia de Algodão
+35;Besta Wookiee;Bandoleira de Couro;Colar de Ossos
+36;Arco de Caçadora;Armadura de Tecido e Máquina;Foco de Dados
+37;Lâminas do Caos;Armadura do Exílio;Cabeça de Mímir
+38;Espada da Malenia;Armadura de Ouro Imaculado;Flor de Lótus Podre
+39;Raios da Força;Manto de Lorde Sith;Anel Imperial
+40;Ferroada (Sting);Colete de Mithril;Cajado de Viagem
+41;Garras de Oni;Quimono de Seda;Bamboo de Proteção
+42;Eletrochoque;Chassi de Metal;Scanner de Dados
+43;Masamune;Capa Longa de Soldado;Pena de Asa Negra
+44;Espada de Rohan;Escudo de Cavalaria;Broche de Folha
+45;Blaster LL-30;Manto de Pistoleiro;Chapéu de Abas Largas
+46;Punhos de Borracha;Colete Vermelho;Chapéu de Palha
+47;Icingdeath e Twinkle;Armadura de Escamas de Dragão;Estatueta de Pantera
+48;Cetro do Arquimago;Robe de Dalaran;Pingente de Arcane
+49;Sabres de Luz de Revan;Manto de Revan;Máscara de Mandaloriano
+50;Cajado da Deusa;Vestido de Divindade;Garrafa de Água Sagrada
+52;Blaster Escondido;Vestido de Senadora;Tiara de Naboo
+53;Matadora de Dragões;Armadura de Berserker;Behelit Vermelho
+54;Magia de Caos;Robe de Veludo Negro;Medalhão de Obsidiana
+55;Sabre de Luz Instável;Túnica de Kylo Ren;Máscara de Ferro
+56;Punhos Nus;Traje de Treino Amarelo;Saco de Compras
+57;Cimitarra Uruk;Escudo de Mão;Elmo de Ferro
+58;Sabre de Luz Amarelo;Túnica de Sucateira;Bastão de Metal
+59;Adagas de Ossos;Couro de Assassina;Frasco de Veneno
+60;Bastão Mágico;Kimono de Tartaruga;Nuvem Voadora
+61;Sabre de Luz Vermelho;Armadura Cibernética;Painel de Controle Chest
+62;Maça de Shar;Cota de Malha Escura;Artefato Githyanki
+63;Adaga de Prata;Roupa de Couro Elegante;Anel de Família
+64;Poder da Força;Túnica de Bebê;Pingente do Mythossauro
+65;Arco Florestal;Armadura de Couro Élfico;Carcás de Flechas
+66;Espada de Gondor;Armadura do Capitão;Manto de Ranger
+67;Espada de Grama;Mochila Verde;Chapéu de Urso

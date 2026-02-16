@@ -22,7 +22,8 @@ int main(){
     {
         switch (tela)
         {
-            case 1: 
+            case 1:
+                //adiciona personagens na lista
                 personagens.add_lista();
                 break;
             case 2:
@@ -30,9 +31,11 @@ int main(){
                 personagens.remove();
                 break;
             case 3:
-                //buscar ficha
+                //busca
+                personagens.busca();
                 break;
             case 4 :
+                //lista os personagens
                 personagens.lista_jogadores();
                 break;
             case 5:

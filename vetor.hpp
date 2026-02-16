@@ -74,7 +74,7 @@ class Vetor {
     public:
     Vetor(personagem* personagens, int tamanho, int pos): m_personagens(personagens), m_tamanho(tamanho), position(pos) {}
 
-
+    //escreve no arquivo a lista de jogadores serve tambem para quando fro atualizar o vetor e o arquivo em add e remover 
     void escreve_lista(){
         ofstream arq_atualizaso("./src/fichas.txt");
         string linha;
@@ -96,18 +96,15 @@ class Vetor {
         arq_atualizaso.close();
     }
 
-
+    //inicializa colocando todos os elementos do arquivo no vetor 
     void inicializa(){
         recebe();
     }
-
+    //status padarão (n sei se vou continuar com essa idaia)
     status padrao(status Spadrao){
         //status padrão de um novo personagem level 1 
         Spadrao.hp = 20;
-        Spadrao.hp_atual = 20;
         Spadrao.lv = 20;
-        Spadrao.xp = 0;
-        Spadrao.xp_next_lv = 100;
         Spadrao.def = 10;
         Spadrao.atk = 10;
         Spadrao.carisma = 15;
@@ -115,6 +112,7 @@ class Vetor {
         Spadrao.percepcao = 15;
         return Spadrao;
     }
+    //faz o cadastro de um novo jogador
     personagem cadasdastro(){
         personagem novo_jogador;
         novo_jogador.id = position;
@@ -152,6 +150,7 @@ class Vetor {
         return novo_jogador;
 
     }
+    //adiciona um jogador na lista do arquivo  e no vetor 
     void add_lista(){
         personagem novo_personagem = cadasdastro();//faz o cadastro do novo personagem e retorna na variavel;
         int ultimo_p = position;
@@ -164,6 +163,7 @@ class Vetor {
         position++;
         escreve_lista();
     }
+    //função para imprimir todos os jogadores funciona para o lista e remove 
     void imprime_jogadores() {
         system("clear");
         cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#"<<endl;
@@ -181,7 +181,7 @@ class Vetor {
             }
         }
     }
-
+    //lista os jogadores com um criterio de parada para o usuario ver 
     void lista_jogadores(){
         imprime_jogadores();
         int voltar = -2;
@@ -191,6 +191,78 @@ class Vetor {
             cin >> voltar;
         }
     }
+    //sistema de busca
+    // FAZER UM VERIFICADOR SE O ELEMENTO FOI ENCONTRADO E SE O ID É UM INTEIRO
+    //imprime padrão para qualquer busca que o usuario quiser
+    void imprime_elem_esp(int x){
+        cout <<"|id: "<<m_personagens[x].id 
+        <<" |nome: "<< m_personagens[x].nome 
+        <<" |classe: "<< m_personagens[x].classe 
+        <<" |raça: "<< m_personagens[x].raca
+        <<" |sexo: "<<m_personagens[x].sexo 
+        <<" |idade: "<< m_personagens[x].idade
+        <<" |level: "<<m_personagens[x].persona_s.lv
+        <<" |descrxião: "<< m_personagens[x].descricao<<endl;
+    }
+
+    //busca por id
+    void busca_id(int elm_id){
+        for(int i = 0;i < position;i++){
+            if(elm_id == m_personagens[i].id){
+                imprime_elem_esp(i);
+            }
+        }
+    }
+    //busca por nome
+    void busca_nome(string elm_c){
+        for(int i = 0;i < position;i++){
+            if(elm_c == m_personagens[i].nome){
+                imprime_elem_esp(i);
+            }
+        }
+    }
+    //busca por classe
+    void busca_classe(string elm_c){
+        for(int i = 0;i < position;i++){
+            if(elm_c == m_personagens[i].classe){
+                imprime_elem_esp(i);
+            }
+        }
+    }
+    //busca por raça
+    void busca_raca(string elm_r){
+        for(int i = 0;i < position;i++){
+            if(elm_r == m_personagens[i].classe){
+                imprime_elem_esp(i);
+            }
+        }
+    }
+    void busca(){
+        system("clear");
+        int escolha;
+        string busca_;
+        char outra_b;
+        cout<<"você deseja buscar por? \n"<<"(1)id\n"<<"(2)nome\n"<<"(3)classe\n"<<"(4)raça\n";
+        cin>> escolha;
+        system("clear");
+        cout<< "digite o elemento que deseja buscar: ";
+        cin.ignore();
+        getline(cin,busca_);
+        switch(escolha){
+            case 1:busca_id(stoi(busca_)); break;
+            case 2:busca_nome(busca_);break;
+            case 3:busca_classe(busca_); break;
+            case 4:busca_raca(busca_); break;
+        }
+        cout << "deseja buscar outro jogador(es) [s/n]: ";
+        cin >>outra_b;
+        if(outra_b == 's' || outra_b == 'S'){
+            busca();
+        }
+    }
+    //fim de sistema de busca
+
+    //sistema para remover 
     void remove(){
         int id_remove;
         imprime_jogadores();

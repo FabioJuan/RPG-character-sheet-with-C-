@@ -18,9 +18,6 @@ struct itens
 
 struct status{
     float hp;
-    float hp_atual;
-    int xp;
-    int xp_next_lv;
     int lv;
     int atk;
     int def;
