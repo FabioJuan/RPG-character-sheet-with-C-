@@ -1,1 +1,60 @@
-8;Alucard;Andarilho;M;597;Procura um oponente digno. 
+8;Alucard;Vampiro;Andarilho;M;597;99;Procura um oponente digno. 
+9;Geralt;Bruxo;Mutante;M;95;50;Caçador de monstros profissional. 
+10;Legolas;Arqueiro;Elfo;M;2931;45;Mestre das flechas de precisão. 
+11;Anakin;Jedi;Humano;M;22;80;Escolhido da profecia da Força. 
+12;Erza;Guerreira;Humano;F;19;55;Mestra das armaduras mágicas. 
+13;Zoro;Espadachim;Humano;M;21;60;Usa três espadas ao mesmo tempo. 
+14;Yoda;Mestre Jedi;Desconhecido;M;900;100;Pequeno em tamanho, gigante na Força. 
+15;Thrall;Xamã;Orc;M;32;70;Líder espiritual da Horda. 
+16;Ciri;Viajante;Humana;F;21;40;Herdeira do Sangue Antigo. 
+17;Ahsoka;Padawan;Togruta;F;17;35;Guerreira ágil com sabres duplos. 
+18;Link;Herói;Hylian;M;117;40;Portador da Espada Mestra. 
+19;Galadriel;Maga;Elfo;F;7000;90;Senhora da luz e sabedoria. 
+20;Grog;Bárbaro;Goliath;M;28;15;Força bruta e inteligência baixa. 
+21;Mando;Caçador;Humano;M;35;45;Este é o caminho. 
+22;Tifa;Lutadora;Humana;F;23;48;Punhos rápidos e chutes letais. 
+23;Gimli;Guerreiro;Anão;M;139;42;Especialista em machados pesados. 
+24;Megumin;Maga;Humana;F;14;30;Só sabe usar magia de explosão. 
+25;Obi-Wan;Mestre Jedi;Humano;M;38;75;Mestre do combate defensivo. 
+26;Sauron;Necromante;Maia;M;10000;99;O Senhor do Escuro. 
+27;Arwen;Curandeira;Meio-Elfo;F;2700;30;Beleza e magia de cura. 
+28;Bobba Fett;Caçador;Clone;M;36;50;O melhor mercenário da galáxia. 
+29;Tanjiro;Espadachim;Humano;M;15;25;Respiração da água e do sol. 
+30;Lich King;Cavaleiro Morte;Morto-vivo;M;35;95;Governante do trono de gelo. 
+31;Keyleth;Druida;Meio-Elfo;F;24;20;Poder da natureza elemental. 
+32;Han Solo;Contrabandista;Humano;M;32;40;Atirou primeiro. 
+33;Mikasa;Soldada;Humana;F;19;50;Gênio do combate acrobático. 
+34;Dobby;Servo;Elfo Doméstico;M;30;10;Livre e protetor. 
+35;Chewbacca;Piloto;Wookiee;M;200;55;Co-piloto leal e forte. 
+36;Aloy;Caçadora;Humana;F;19;45;Mestra em derrubar máquinas. 
+37;Kratos;Guerreiro;Semideus;M;1000;99;O Fantasma de Esparta. 
+38;Malenia;Guerreira;Semideusa;F;500;95;Nunca conheceu a derrota. 
+39;Sidious;Lorde Sith;Humano;M;82;98;Poder ilimitado do lado sombrio. 
+40;Frodo;Portador;Hobbit;M;50;5;Pequeno herói de grande destino. 
+41;Nezuko;Oni;Demônio;F;14;30;Luta para proteger humanos. 
+42;R2-D2;Mecânico;Droide;N;33;20;Astromecânico corajoso e teimoso. 
+43;Sephiroth;Soldado;Anjo;M;30;90;Uma asa negra e espada longa. 
+44;Eowyn;Escudeira;Humana;F;24;35;Matadora do Rei Bruxo. 
+45;Cad Bane;Pistoleiro;Duros;M;45;55;Mercenário implacável. 
+46;Luffy;Pirata;Borracha;M;19;70;Quer ser o rei dos piratas. 
+47;Drizzt;Patrulheiro;Drow;M;150;60;Luta com duas cimitarras. 
+48;Jaina;Maga;Humana;F;35;85;A feiticeira mais poderosa da Aliança. 
+49;Revan;Lorde Jedi;Humano;M;40;90;Equilíbrio entre luz e trevas. 
+50;Aqua;Deusa;Divindade;F;2000;1;Poderosa, mas muito azarada. 
+51;Illidan;Caçador Demônios;Elfo Noturno;M;10000;90;Você não está preparado. 
+52;Padmé;Diplomata;Humana;F;27;15;Luta pela democracia no Senado. 
+53;Guts;Mercenário;Humano;M;24;85;O Espadachim Negro. 
+54;Yennefer;Feiticeira;Quarteirão-Elfa;F;94;75;Mestra das artes arcanas. 
+55;Kylo Ren;Líder Supremo;Humano;M;30;65;Conflito interno e força bruta. 
+56;Saitama;Herói;Humano;M;25;100;Um soco é o suficiente. 
+57;Lurtz;Guerreiro;Uruk-hai;M;1;20;Criado para a guerra. 
+58;Rey;Jedi;Humana;F;20;50;Sucateira com grande destino. 
+59;Garona;Assassina;Meio-Orc;F;30;45;Mestra da infiltração. 
+60;Goku;Lutador;Sayajin;M;40;99;Sempre busca superar limites. 
+61;Vader;Lorde Sith;Cyborg;M;45;95;O punho de ferro do Império. 
+62;Shadowheart;Clériga;Meio-Elfo;F;40;12;Fiel aos segredos de Shar. 
+63;Astarion;Ladino;Vampiro;M;239;15;Elegante e traiçoeiro. 
+64;Grogu;Aprendiz;Desconhecido;M;50;5;A criança sensível à Força. 
+65;Tauriel;Guarda;Elfo;F;600;35;Capitã da guarda florestal. 
+66;Faramir;Capitão;Humano;M;36;40;Defensor fiel de Gondor. 
+67;Finn;Guerreiro;Humano;M;16;30;Aventureiro na terra de Ooo.

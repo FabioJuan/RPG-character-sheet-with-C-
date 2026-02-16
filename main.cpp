@@ -27,15 +27,17 @@ int main(){
                 personagens.add_lista();
                 break;
             case 2:
-            
+                //remove
+                personagens.remove();
                 break;
             case 3:
                 //buscar ficha
                 break;
             case 4 :
-                personagens.imprime_jogadores();
+                personagens.lista_jogadores();
                 break;
             case 5:
+                system("clear");
                 rodando = false;
                 break;
             default:

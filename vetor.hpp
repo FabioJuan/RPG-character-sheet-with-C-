@@ -19,6 +19,7 @@ class Vetor {
         stringstream linhaI(linha);
         string dado;
         getline(linhaI,dado,';');
+        //cout<<"tentando converter ["<<dado<<"] id"<<endl;
         personaI.id = stoi(dado);
 
         getline(linhaI,personaI.nome,';');
@@ -27,9 +28,11 @@ class Vetor {
         getline(linhaI,personaI.sexo,';');
         
         getline(linhaI,dado,';');
+        //cout<<"tentando converter ["<<dado<<"] idade"<<endl;
         personaI.idade =stoi(dado);
 
         getline(linhaI,dado,';');
+        //cout<<"tentando converter ["<<dado<<"] lv"<<endl;
         personaI.persona_s.lv =  stoi(dado);
 
         getline(linhaI,personaI.descricao);
@@ -74,11 +77,14 @@ class Vetor {
 
 
     void escreve_lista(){
-        ofstream arq_atualizaso("n.txt");
+        ofstream arq_atualizaso("./src/fichas.txt");
         string linha;
-        int i;
-       
-             arq_atualizaso<< m_personagens[0].id<< ";"<<m_personagens[0].nome<<";"<<m_personagens[0].raca<<";"<<m_personagens[0].sexo<<";"<<m_personagens[0].idade<<";"<<m_personagens[0].descricao<< endl;
+        int i = 0;
+        while (arq_atualizaso.good()&& (i <= position))
+        {
+            arq_atualizaso<< m_personagens[i].id<< ";"<<m_personagens[i].nome<<";"<<m_personagens[i].raca<<";"<<m_personagens[i].sexo<<";"<<m_personagens[i].idade<<";"<<m_personagens[i].descricao<< endl;
+            i++;
+        }
         arq_atualizaso.close();
     }
 
@@ -148,35 +154,47 @@ class Vetor {
             m_personagens[ultimo_p] = novo_personagem;
         }
         position++;
+        escreve_lista();
     }
     void imprime_jogadores() {
-        int voltar = -2;
+        system("clear");
         cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#"<<endl;
         
-        for(int i = 0;i < m_tamanho;i++){
-            cout <<"|id: "<<m_personagens[i].id <<" |nome: "<< m_personagens[i].nome <<" |classe: "<< m_personagens[i].classe <<" |raça: "<< m_personagens[i].raca<<" |sexo: "<<m_personagens[i].sexo <<" |idade: "<< m_personagens[i].idade<<" |level: "<<m_personagens[i].persona_s.lv<<" |descrição: "<< m_personagens[i].descricao<<endl;
+        for(int i = 0;i <=position;i++){
+            if(m_personagens[i].id < 0){
+                cout <<"|id: "<<m_personagens[i].id <<" |nome: "<< m_personagens[i].nome <<" |classe: "<< m_personagens[i].classe <<" |raça: "<< m_personagens[i].raca<<" |sexo: "<<m_personagens[i].sexo <<" |idade: "<< m_personagens[i].idade<<" |level: "<<m_personagens[i].persona_s.lv<<" |descrição: "<< m_personagens[i].descricao<<endl;
+            }
         }
+    }
+
+    void lista_jogadores(){
+        imprime_jogadores();
+        int voltar = -2;
         while(voltar !=-1)
         {
             cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
             cin >> voltar;
         }
-        
     }
+    void remove(){
+        int id_remove;
+        imprime_jogadores();
+        bool encontrado = false;
+        cout<<"digite o id do jogador que deseje remover:";
+        cin >> id_remove;
+        for(int i =0; i <= position;i++){
+            if(m_personagens[i].id == id_remove){
+                m_personagens[i].id = -1;
+                encontrado = true;
+            }
+        }
+        if(!encontrado){
+            cout<<"jogador não encontrado"<<endl;
 
+        }
+        escreve_lista();
+        //recebe();
+
+    }
 };
-/*
-        string s_novopersonagem;
-        //adiciona o novo personagem em um arquivo 
-        ofstream novo_("./src/novo.txt");
-        novo_ << novo_personagem.id<< ";"<<novo_personagem.nome<<";"<<novo_personagem.raca<<";"<<novo_personagem.sexo<<";"<<novo_personagem.idade<<";"<<novo_personagem.descricao;
-        novo_.close();
-        //coloca o personagem em uma string 
-        ifstream le_novo("./src/novo.txt");
-        getline(le_novo,s_novopersonagem);
-        
-        //fazer o vetor aumentar de tamanho caso ele n tenha mais espaço se não somente colocar na proxima posição
-        return s_novopersonagem;
-*/
-
 #endif
