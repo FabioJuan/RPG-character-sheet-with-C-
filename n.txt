@@ -41,7 +41,7 @@
 48;Jaina;Maga;Humana;F;35;85;A feiticeira mais poderosa da Aliança. 
 49;Revan;Lorde Jedi;Humano;M;40;90;Equilíbrio entre luz e trevas. 
 50;Aqua;Deusa;Divindade;F;2000;1;Poderosa, mas muito azarada. 
-51;Illidan;Caçador Demônios;Elfo Noturno;M;10000;90;Você não está preparado. 
+-1;Illidan;Caçador Demônios;Elfo Noturno;M;10000;90;Você não está preparado. 
 52;Padmé;Diplomata;Humana;F;27;15;Luta pela democracia no Senado. 
 53;Guts;Mercenário;Humano;M;24;85;O Espadachim Negro. 
 54;Yennefer;Feiticeira;Quarteirão-Elfa;F;94;75;Mestra das artes arcanas. 

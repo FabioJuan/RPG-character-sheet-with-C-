@@ -36,7 +36,6 @@ class Vetor {
         personaI.persona_s.lv =  stoi(dado);
 
         getline(linhaI,personaI.descricao);
-
         return personaI;
     }
 
@@ -67,8 +66,8 @@ class Vetor {
                 atualiza_vetor();
             }    
         }
+        //cout << "consegui cenverter";
         arq.close();
-
 }
     
     
@@ -80,11 +79,20 @@ class Vetor {
         ofstream arq_atualizaso("./src/fichas.txt");
         string linha;
         int i = 0;
-        while (arq_atualizaso.good()&& (i <= position))
-        {
-            arq_atualizaso<< m_personagens[i].id<< ";"<<m_personagens[i].nome<<";"<<m_personagens[i].raca<<";"<<m_personagens[i].sexo<<";"<<m_personagens[i].idade<<";"<<m_personagens[i].descricao<< endl;
-            i++;
+        for (i; i <position;i++){
+            if(m_personagens[i].id >= 0){
+                arq_atualizaso<< m_personagens[i].id<< ";"
+                                <<m_personagens[i].nome<<";"
+                                <<m_personagens[i].classe<<";"
+                                <<m_personagens[i].raca<<";"
+                                <<m_personagens[i].sexo<<";"
+                                <<m_personagens[i].idade<<";"
+                                <<m_personagens[i].persona_s.lv
+                                <<";"<<m_personagens[i].descricao
+                                << endl;
+            }
         }
+
         arq_atualizaso.close();
     }
 
@@ -132,7 +140,7 @@ class Vetor {
         cout<<endl<<"digite o seu sexo:";
         cin >> novo_jogador.sexo;
 
-        padrao(novo_jogador.persona_s);
+        novo_jogador.persona_s = padrao(novo_jogador.persona_s);
 
         while (novo_jogador.sexo != "f" and novo_jogador.sexo != "F" and 
                 novo_jogador.sexo != "m" and novo_jogador.sexo != "M" and 
@@ -160,9 +168,16 @@ class Vetor {
         system("clear");
         cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#"<<endl;
         
-        for(int i = 0;i <=position;i++){
-            if(m_personagens[i].id < 0){
-                cout <<"|id: "<<m_personagens[i].id <<" |nome: "<< m_personagens[i].nome <<" |classe: "<< m_personagens[i].classe <<" |raça: "<< m_personagens[i].raca<<" |sexo: "<<m_personagens[i].sexo <<" |idade: "<< m_personagens[i].idade<<" |level: "<<m_personagens[i].persona_s.lv<<" |descrição: "<< m_personagens[i].descricao<<endl;
+        for(int i = 0;i < position;i++){
+            if(m_personagens[i].id >= 0){
+                cout <<"|id: "<<m_personagens[i].id 
+                <<" |nome: "<< m_personagens[i].nome 
+                <<" |classe: "<< m_personagens[i].classe 
+                <<" |raça: "<< m_personagens[i].raca
+                <<" |sexo: "<<m_personagens[i].sexo 
+                <<" |idade: "<< m_personagens[i].idade
+                <<" |level: "<<m_personagens[i].persona_s.lv
+                <<" |descrição: "<< m_personagens[i].descricao<<endl;
             }
         }
     }
@@ -170,7 +185,7 @@ class Vetor {
     void lista_jogadores(){
         imprime_jogadores();
         int voltar = -2;
-        while(voltar !=-1)
+        while(voltar != -1)
         {
             cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
             cin >> voltar;
@@ -190,11 +205,11 @@ class Vetor {
         }
         if(!encontrado){
             cout<<"jogador não encontrado"<<endl;
-
         }
         escreve_lista();
-        //recebe();
+        recebe();
 
     }
-};
+}; 
+
 #endif
