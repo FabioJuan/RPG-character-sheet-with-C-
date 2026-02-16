@@ -48,6 +48,7 @@ int main(){
                 break;
             }
             menu();
+            
             cin >> tela;
         }
         
