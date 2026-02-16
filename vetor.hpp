@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include "personagens.hpp"
+#include "telas.hpp"
 
 using namespace std;
 
@@ -38,6 +39,7 @@ class Vetor {
         getline(linhaI,personaI.descricao);
         return personaI;
     }
+
 
     void atualiza_vetor(){
         int novo_tamanho = m_tamanho + 10;
@@ -184,12 +186,13 @@ class Vetor {
     //lista os jogadores com um criterio de parada para o usuario ver 
     void lista_jogadores(){
         imprime_jogadores();
-        int voltar = -2;
-        while(voltar != -1)
-        {
+        int voltar = 0;
+        if(voltar >=0){
             cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
             cin >> voltar;
+            detalhe_personagem(m_personagens[voltar]);
         }
+            
     }
     //sistema de busca
     // FAZER UM VERIFICADOR SE O ELEMENTO FOI ENCONTRADO E SE O ID É UM INTEIRO
