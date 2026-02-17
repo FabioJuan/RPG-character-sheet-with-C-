@@ -5,6 +5,7 @@
 #include <fstream>
 #include<cstdlib>
 #include"personagens.hpp"
+#include"edita_elem.hpp"
 
 using namespace std;
 
@@ -30,7 +31,7 @@ void menu(){
         cout <<"                                (5)fechar progama"<<"\n";
 }
 
-void detalhe_personagem(personagem p_detalhado){
+void detalhe_personagem(personagem &p_detalhado,bool foi_alterado){
     system("clear");
     ifstream arq;
     string linha;
@@ -39,7 +40,7 @@ void detalhe_personagem(personagem p_detalhado){
         //escolhe o arquivo muie
         arq.open("./pixelart/muie.txt");
     }
-    if(p_detalhado.sexo == "h" ||p_detalhado.sexo == "M" ){
+    if(p_detalhado.sexo == "m" ||p_detalhado.sexo == "M" ){
         //escolhe o arquivo muie
         arq.open("./pixelart/homi.txt");
     }
@@ -83,12 +84,18 @@ void detalhe_personagem(personagem p_detalhado){
     cout <<"(14)arma: "<<p_detalhado.inventario.arma<<endl;
     cout <<"(15)armadura: "<<p_detalhado.inventario.armadura<<endl;
     cout <<"(16)acessorio: "<<p_detalhado.inventario.acessorio<<endl;
-
-    cout<<"você deseja editar algum atributo se não digite -1: ";
-    cin >> editar;
-
-
-
+    while (editar != -1)
+    {
+        cout<<"você deseja editar algum atributo se não digite -1: ";
+        cin >> editar;
+        if(edit(p_detalhado,editar)){
+            foi_alterado = true;
+        }
+    }
     
+      
+
 }
+
+
 #endif

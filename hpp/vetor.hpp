@@ -200,16 +200,25 @@ class Vetor {
                 arq_inv << m_personagens[i].id<<";"
                 <<m_personagens[i].inventario.arma<<";"
                 <<m_personagens[i].inventario.armadura<<";"
-                <<m_personagens[i].inventario.acessorio<<";"<<endl;
+                <<m_personagens[i].inventario.acessorio<<endl;
             }
         }
     }
 
     //inicializa colocando todos os elementos do arquivo no vetor 
-    void inicializa(){
+    void receba_(){
         recebe();
         recebe_status();
         recebe_itens();
+    }
+    void escreve_arquivos(){
+        escreve_lista();
+        escreve_lista_status();
+        escreve_inv();
+    }
+    void atualiza(){
+        escreve_arquivos();
+        receba_();
     }
     itens padrao_inv(itens inventario){
         inventario.arma = "graveto";
@@ -278,9 +287,7 @@ class Vetor {
             m_personagens[ultimo_p] = novo_personagem;
         }
         position++;
-        escreve_lista();
-        escreve_inv();
-        escreve_lista_status();
+        escreve_arquivos();
     }
     //função para imprimir todos os jogadores funciona para o lista e remove 
     void imprime_jogadores() {
@@ -302,13 +309,15 @@ class Vetor {
     }
     //lista os jogadores com um criterio de parada para o usuario ver 
     void lista_jogadores(){
+        bool alterado = false;
         imprime_jogadores();
         int voltar = 0;
         if(voltar >=0){
             cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
             cin >> voltar;
-            detalhe_personagem(m_personagens[busca_id_SI(voltar)]);
-        }
+            detalhe_personagem(m_personagens[busca_id_SI(voltar)],alterado);
+        }  
+        escreve_arquivos();
             
     }
     //sistema de busca
@@ -398,13 +407,7 @@ class Vetor {
         if(!encontrado){
             cout<<"jogador não encontrado"<<endl;
         }
-        escreve_lista();
-        escreve_inv();
-        escreve_lista_status();
-        recebe();
-        recebe_itens();
-        recebe_status();
-
+        atualiza();
     }
 }; 
 

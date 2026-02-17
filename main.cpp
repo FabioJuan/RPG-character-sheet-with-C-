@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include "personagens.hpp"
-#include "vetor.hpp"
-#include "telas.hpp"
+#include "./hpp/personagens.hpp"
+#include "./hpp/vetor.hpp"
+#include "./hpp/telas.hpp"
 
 using namespace std;   
 
@@ -15,7 +15,7 @@ int main(){
     bool rodando = true;
     personagem *jogadores = new personagem[n_jogadores];// vetor dimanico 
     Vetor personagens = Vetor(jogadores, n_jogadores, position);//o array jogadores recebe uma classe 
-    personagens.inicializa();
+    personagens.receba_();
     cin >> tela;
     while (rodando)
     {

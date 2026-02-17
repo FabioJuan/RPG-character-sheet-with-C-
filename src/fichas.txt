@@ -57,3 +57,4 @@
 65;Tauriel;Guarda;Elfo;F;600;35;Capitã da guarda florestal. 
 66;Faramir;Capitão;Humano;M;36;40;Defensor fiel de Gondor. 
 67;Finn;Guerreiro;Humano;M;16;30;Aventureiro na terra de Ooo.
+
