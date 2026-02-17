@@ -51,26 +51,43 @@ void detalhe_personagem(personagem p_detalhado){
     getline(arq,linha);//linha1
     cout<<linha<<"geral"<<endl;
     getline(arq,linha);//linha2
-    cout<<linha<<"(1)id: "<<p_detalhado.id<<endl;
+    cout<<linha<<"id: "<<p_detalhado.id<<endl;
     getline(arq,linha);//linha3
-    cout<<linha<<"(2)nome: "<<p_detalhado.nome<<endl;
+    cout<<linha<<"(1)nome: "<<p_detalhado.nome<<endl;
     getline(arq,linha);//linha4
-    cout<<linha<<"(3)classe: "<<p_detalhado.classe<<endl;
+    cout<<linha<<"(2)classe: "<<p_detalhado.classe<<endl;
     getline(arq,linha);//linha5
-    cout<<linha<<"(4)raça: "<<p_detalhado.raca<<endl;
+    cout<<linha<<"(3)raça: "<<p_detalhado.raca<<endl;
     getline(arq,linha);//linha6
-    cout<<linha<<"(5)sexo: "<<p_detalhado.sexo<<endl;
+    cout<<linha<<"(4)sexo: "<<p_detalhado.sexo<<endl;
     getline(arq,linha);//linha7
-    cout<<linha<<"(6)idade: "<<p_detalhado.idade<<endl;
+    cout<<linha<<"(5)idade: "<<p_detalhado.idade<<endl;
     getline(arq,linha);//linha8
-    cout<<linha<<"(7)level: "<<p_detalhado.persona_s.lv<<endl;
+    cout<<linha<<"(6)level: "<<p_detalhado.persona_s.lv<<endl;
     getline(arq,linha);//linha9
-    cout<<linha<<"(8)descrição: "<<p_detalhado.descricao<<endl;
+    cout<<linha<<"(7)descrição: "<<p_detalhado.descricao<<endl;
     getline(arq,linha);//linha10
     cout<<linha<<endl;
+
     arq.close();
+
+    //status
+    cout<<"     status"<<endl;
+    cout <<"(8)hp: "<<p_detalhado.persona_s.hp<<endl;
+    cout <<"(9)ataque: "<<p_detalhado.persona_s.atk<<endl;
+    cout <<"(10)defesa: "<<p_detalhado.persona_s.def<<endl;
+    cout <<"(11)inteligencia: "<<p_detalhado.persona_s.inteligencia<<endl;
+    cout <<"(12)percepção: "<<p_detalhado.persona_s.percepcao<<endl;
+    cout <<"(13)carisma: "<<p_detalhado.persona_s.carisma<<endl;
+    cout <<"    inventário"<<endl;
+    cout <<"(14)arma: "<<p_detalhado.inventario.arma<<endl;
+    cout <<"(15)armadura: "<<p_detalhado.inventario.armadura<<endl;
+    cout <<"(16)acessorio: "<<p_detalhado.inventario.acessorio<<endl;
+
     cout<<"você deseja editar algum atributo se não digite -1: ";
     cin >> editar;
+
+
 
     
 }

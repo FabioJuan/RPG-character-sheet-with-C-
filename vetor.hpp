@@ -30,7 +30,7 @@ class Vetor {
         
         getline(linhaI,dado,';');
         //cout<<"tentando converter ["<<dado<<"] idade"<<endl;
-        personaI.idade =stoi(dado);
+        personaI.idade = stoi(dado);
 
         getline(linhaI,dado,';');
         //cout<<"tentando converter ["<<dado<<"] lv"<<endl;
@@ -70,7 +70,89 @@ class Vetor {
         }
         //cout << "consegui cenverter";
         arq.close();
-}
+    }
+    //busca a posição do id especifico no vetor
+    int busca_id_SI(int id_do_personagem){
+        int position_personagem = 0;
+        for(int i = 0; i < position;i++){
+            if(m_personagens[i].id == id_do_personagem){
+                position_personagem = i;
+                return position_personagem;
+            }
+        }
+        cout << "personagem não encontrado";
+        return position_personagem;
+    }
+    //atribui os status ara casa personagem
+    void atrubui_status(string &linha_s){
+        //atribui status de cada jogador
+        stringstream dados_linha(linha_s);
+        string dado;
+        getline(dados_linha,dado,';');
+        int pos_id = busca_id_SI(stoi(dado));
+        
+        getline(dados_linha,dado,';');
+        m_personagens[pos_id].persona_s.hp = stoi(dado);
+
+        getline(dados_linha,dado,';');
+        m_personagens[pos_id].persona_s.lv = stoi(dado);
+
+        getline(dados_linha,dado,';');
+        m_personagens[pos_id].persona_s.atk = stoi(dado);
+
+        getline(dados_linha,dado,';');
+        m_personagens[pos_id].persona_s.def = stoi(dado);
+
+        getline(dados_linha,dado,';');
+        m_personagens[pos_id].persona_s.inteligencia = stoi(dado);
+
+        getline(dados_linha,dado,';');
+        m_personagens[pos_id].persona_s.percepcao = stoi(dado);
+
+        getline(dados_linha,dado);
+        m_personagens[pos_id].persona_s.carisma = stoi(dado);
+        //cout<<pos_id<<";"<<m_personagens[pos_id].persona_s.hp<<";"<<m_personagens[pos_id].persona_s.atk<<endl;
+    }
+    void recebe_status(){
+        ifstream arq("./src/status_fichas.txt");
+        string linhas;
+        if(!arq.is_open()){
+            cout<<"arquivo de status não encontrado"<<endl;
+            cin >> linhas;
+        }
+        while(getline(arq,linhas)){
+            atrubui_status(linhas);
+        }
+        arq.close();
+
+    }
+    void atribui_itens(string &linhas_itens){
+        stringstream dados_itens(linhas_itens);
+        string dado;
+        getline(dados_itens,dado,';');
+        int pos_id_itens = busca_id_SI(stoi(dado));
+
+        getline(dados_itens,dado,';');
+        m_personagens[pos_id_itens].inventario.arma = dado;
+
+        getline(dados_itens,dado,';');
+        m_personagens[pos_id_itens].inventario.armadura = dado;
+
+        getline(dados_itens,dado);
+        m_personagens[pos_id_itens].inventario.acessorio = dado;
+    }
+    void recebe_itens(){
+        ifstream arq("./src/itens_fichas.txt");
+        string linhas;
+        if(!arq.is_open()){
+            cout<<"arquivo de status não encontrado"<<endl;
+            cin >> linhas;
+        }
+        while(getline(arq,linhas)){
+            atribui_itens(linhas);
+        }
+        
+    }
     
     
     public:
@@ -101,6 +183,8 @@ class Vetor {
     //inicializa colocando todos os elementos do arquivo no vetor 
     void inicializa(){
         recebe();
+        recebe_status();
+        recebe_itens();
     }
     //status padarão (n sei se vou continuar com essa idaia)
     status padrao(status Spadrao){
@@ -190,7 +274,7 @@ class Vetor {
         if(voltar >=0){
             cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
             cin >> voltar;
-            detalhe_personagem(m_personagens[voltar]);
+            detalhe_personagem(m_personagens[busca_id_SI(voltar)]);
         }
             
     }

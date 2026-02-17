@@ -37,5 +37,6 @@ struct personagem{
     string descricao;
     //a struct status quando personagem criado deve criar um status padrão lv 1
     status persona_s;
+    itens inventario;
 };
 #endif 
