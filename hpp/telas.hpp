@@ -9,6 +9,8 @@
 
 using namespace std;
 
+
+
 void menu(){
     system("clear");
     system("cls");
@@ -90,6 +92,7 @@ void detalhe_personagem(personagem &p_detalhado){
     {
         cout<<"você deseja editar algum atributo se não digite -1: ";
         cin >> editar;
+        edit(p_detalhado,editar);
     }
     
       

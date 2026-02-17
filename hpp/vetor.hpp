@@ -272,22 +272,22 @@ class Vetor {
         novo_jogador.id = gera_id();
         cout<<"digite o seu nome:";
         cin.ignore();
-        getline(cin,novo_jogador.nome);
+        getline(cin >> ws,novo_jogador.nome);
 
         cout<<endl <<"digite o sua idade:";
         cin >> novo_jogador.idade;
 
         cout<<endl<<"digite o sua classe:";
-        cin.ignore();
-        getline(cin,novo_jogador.classe);
+        //cin.ignore();
+        getline(cin >> ws,novo_jogador.classe);
 
         cout<<endl<<"digite o sua raça:";
-        cin.ignore();
-        getline(cin,novo_jogador.raca);
+        //cin.ignore();
+        getline(cin >> ws,novo_jogador.raca);
 
         cout<<endl<<"digite sua historia:";
-        cin.ignore();
-        getline(cin,novo_jogador.descricao);
+        //cin.ignore();
+        getline(cin >> ws,novo_jogador.descricao);
 
         cout<<endl<<"digite o seu sexo:";
         cin >> novo_jogador.sexo;

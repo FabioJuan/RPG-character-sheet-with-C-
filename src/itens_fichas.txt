@@ -1,7 +1,11 @@
-0;graveto;fita curativa;moeda de prata
+0;sombrinha preta;fita curativa;notebook
 1;graveto;fita curativa;moeda de prata
 2;graveto;fita curativa;moeda de prata
 3;facão cego;cocos secos;carteira de cigarro
+4;graveto;fita curativa;moeda de prata
+5;graveto;fita curativa;moeda de prata
+6;graveto;fita curativa;moeda de prata
+7;guitarra les paul;moletom rosa;palheta
 8;Espada Espada de Casull;Manto de Alucard;Anel de Prata;
 9;Espada de Prata;Armadura de Couro de Grifo;Medalhão do Lobo;
 10;Arco Galadhrim;Túnica de Mirkwood;Carcás de Flechas Infinitas;
@@ -45,6 +49,7 @@
 48;Cetro do Arquimago;Robe de Dalaran;Pingente de Arcane;
 49;Sabres de Luz de Revan;Manto de Revan;Máscara de Mandaloriano;
 50;Cajado da Deusa;Vestido de Divindade;Garrafa de Água Sagrada;
+51;guita;uniforme escolar;bolo de morango
 52;Blaster Escondido;Vestido de Senadora;Tiara de Naboo;
 53;Matadora de Dragões;Armadura de Berserker;Behelit Vermelho;
 54;Magia de Caos;Robe de Veludo Negro;Medalhão de Obsidiana;
@@ -61,3 +66,7 @@
 65;Arco Florestal;Armadura de Couro Élfico;Carcás de Flechas;
 66;Espada de Gondor;Armadura do Capitão;Manto de Ranger;
 67;Espada de Grama;Mochila Verde;Chapéu de Urso;
+68;elisabass(baixo);vestido maid;morango
+69;teclado casio;uniforme escolar;morango roubado da mio
+70;baquetas;roupa padrão;conjunto de bateria
+71;muttan(guitarra);tiara de gato;pedal distortion

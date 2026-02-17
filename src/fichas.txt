@@ -1,7 +1,11 @@
-0;fabio;progamador;umano;m;20;1;estando o sort
+0;fabio;progamador;Humano;m;20;1;Criador do personagens rpg
 1;vanel;arqueiro;lfo;m;29;1;obre e bobo
 2;viktor Tsoi;bardo;umano;M;28;1;ilosofia da maça fresca
 3;Mundico pé de coco;assasino;oqueiro;f;1423;1;raficante da propia especie
+4;4;kaoewwe;dwefqowc;n;20;1; é lixo ok?
+5;Victor;Musico;Humano;M;18;1;gosto de treinar
+6;juliana;maga;anã;f;22;1;plim para plim
+7;Bocchi;guitarrista;Humana;F;17;1;TRAMPOS???
 8;Alucard;Vampiro;Andarilho;M;597;99;Procura um oponente digno. 
 9;Geralt;Bruxo;Mutante;M;95;50;Caçador de monstros profissional. 
 10;Legolas;Arqueiro;Elfo;M;2931;45;Mestre das flechas de precisão. 
@@ -45,6 +49,7 @@
 48;Jaina;Maga;Humana;F;35;85;A feiticeira mais poderosa da Aliança. 
 49;Revan;Lorde Jedi;Humano;M;40;90;Equilíbrio entre luz e trevas. 
 50;Aqua;Deusa;Divindade;F;2000;1;Poderosa, mas muito azarada. 
+51;Yui Hirasawa;Guitarrista;Humana;F;18;1;amo comer bolos
 52;Padmé;Diplomata;Humana;F;27;15;Luta pela democracia no Senado. 
 53;Guts;Mercenário;Humano;M;24;85;O Espadachim Negro. 
 54;Yennefer;Feiticeira;Quarteirão-Elfa;F;94;75;Mestra das artes arcanas. 
@@ -61,3 +66,7 @@
 65;Tauriel;Guarda;Elfo;F;600;35;Capitã da guarda florestal. 
 66;Faramir;Capitão;Humano;M;36;40;Defensor fiel de Gondor. 
 67;Finn;Guerreiro;Humano;M;16;30;Aventureiro na terra de Ooo.
+68;Mio Akiyama;Baixista;Humana;F;18;1;Cantora timida
+69;Tsumugi Kotobuki;Tecladista;Humana;F;18;1;me divirto com minhas amigas
+70;Ritsu Tainaka;Baterista;Humana;F;18;1;entrar no tempo é dificil...
+71;Azusa;Guitarrista;Humana;F;17;1;praticar praticar praticar
