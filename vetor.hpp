@@ -161,9 +161,7 @@ class Vetor {
     //escreve no arquivo a lista de jogadores serve tambem para quando fro atualizar o vetor e o arquivo em add e remover 
     void escreve_lista(){
         ofstream arq_atualizaso("./src/fichas.txt");
-        string linha;
-        int i = 0;
-        for (i; i <position;i++){
+        for (int i = 0; i <position;i++){
             if(m_personagens[i].id >= 0){
                 arq_atualizaso<< m_personagens[i].id<< ";"
                                 <<m_personagens[i].nome<<";"
@@ -176,8 +174,35 @@ class Vetor {
                                 << endl;
             }
         }
-
         arq_atualizaso.close();
+    }
+    void escreve_lista_status(){
+        ofstream aqr_status_a("./src/status_fichas.txt");
+        for(int i = 0;i<position;i++){
+            if(m_personagens[i].id >=0){
+                aqr_status_a<<m_personagens[i].id<<";"
+                <<m_personagens[i].persona_s.hp<<";"
+                <<m_personagens[i].persona_s.lv<<";"
+                <<m_personagens[i].persona_s.atk<<";"
+                <<m_personagens[i].persona_s.def<<";"
+                <<m_personagens[i].persona_s.inteligencia<<";"
+                <<m_personagens[i].persona_s.percepcao<<";"
+                <<m_personagens[i].persona_s.carisma<<endl;
+
+            }
+        }
+        aqr_status_a.close();
+    }
+    void escreve_inv(){
+        ofstream arq_inv("./src/itens_fichas.txt");
+        for(int i = 0;i<position;i++){
+            if(m_personagens[i].id >= 0){
+                arq_inv << m_personagens[i].id<<";"
+                <<m_personagens[i].inventario.arma<<";"
+                <<m_personagens[i].inventario.armadura<<";"
+                <<m_personagens[i].inventario.acessorio<<";"<<endl;
+            }
+        }
     }
 
     //inicializa colocando todos os elementos do arquivo no vetor 
@@ -186,11 +211,17 @@ class Vetor {
         recebe_status();
         recebe_itens();
     }
+    itens padrao_inv(itens inventario){
+        inventario.arma = "graveto";
+        inventario.armadura = "fita curativa";
+        inventario.acessorio ="moeda de prata";
+        return(inventario);
+    }
     //status padarão (n sei se vou continuar com essa idaia)
     status padrao(status Spadrao){
         //status padrão de um novo personagem level 1 
+        Spadrao.lv = 1;
         Spadrao.hp = 20;
-        Spadrao.lv = 20;
         Spadrao.def = 10;
         Spadrao.atk = 10;
         Spadrao.carisma = 15;
@@ -232,7 +263,7 @@ class Vetor {
         {
             cin >> novo_jogador.sexo;
         }
-
+        novo_jogador.inventario = padrao_inv(novo_jogador.inventario);
         return novo_jogador;
 
     }
@@ -248,6 +279,8 @@ class Vetor {
         }
         position++;
         escreve_lista();
+        escreve_inv();
+        escreve_lista_status();
     }
     //função para imprimir todos os jogadores funciona para o lista e remove 
     void imprime_jogadores() {
@@ -366,7 +399,11 @@ class Vetor {
             cout<<"jogador não encontrado"<<endl;
         }
         escreve_lista();
+        escreve_inv();
+        escreve_lista_status();
         recebe();
+        recebe_itens();
+        recebe_status();
 
     }
 }; 
