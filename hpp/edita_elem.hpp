@@ -10,6 +10,7 @@ using namespace std;
 
 bool edit(personagem &edit_elem,int escolha){
     string alteracao;
+    //dependendo do que for escolhido em detalha_personaem ele pode editar algum atributo o unico que não pode ser editado é o id
     switch(escolha){
         case 1:
             cout << "digite o novo nome: ";

@@ -13,7 +13,7 @@ class Vetor {
     private:
     personagem* m_personagens;//parametros do array 
     int m_tamanho  = 20;//parametro do tamanho
-    int position = 0 ;//posição atua do vetor 
+    int position = 0 ;//posição atual do vetor 
 
     personagem atribui_x( string &linha){
         personagem personaI;
@@ -42,18 +42,18 @@ class Vetor {
 
 
     void atualiza_vetor(){
-        int novo_tamanho = m_tamanho + 10;
-        personagem* novo_vetor = new personagem [novo_tamanho];
+        int novo_tamanho = m_tamanho + 10;//aumenta o tamanho
+        personagem* novo_vetor = new personagem [novo_tamanho];//cria um vetor dinamico
 
         for(int i = 0; i < m_tamanho; i++){
-            novo_vetor[i] = m_personagens[i];
+            novo_vetor[i] = m_personagens[i];//copia os dados do vetor antigo
         }
-        delete[] m_personagens;
-        m_personagens = novo_vetor;
-        m_tamanho = novo_tamanho;
+        delete[] m_personagens;//deleta o vetor antigo
+        m_personagens = novo_vetor;//atribui o novo vetor em m_personagens
+        m_tamanho = novo_tamanho;//atualiza o tamanho
     }
 
-    void recebe(){
+    void recebe(){//recebe a linha especifica e atribui a m_personagens[x]
         position = 0;
         string linhas;
         ifstream arq("./src/fichas.txt");
@@ -68,7 +68,6 @@ class Vetor {
                 atualiza_vetor();
             }    
         }
-        //cout << "consegui cenverter";
         arq.close();
     }
     //busca a posição do id especifico no vetor
@@ -87,9 +86,10 @@ class Vetor {
         //atribui status de cada jogador
         stringstream dados_linha(linha_s);
         string dado;
+        //id 
         getline(dados_linha,dado,';');
-        int pos_id = busca_id_SI(stoi(dado));
-        
+        int pos_id = busca_id_SI(stoi(dado));//busca o id especifico da linha
+        //cada geline lê ate o ; do arquivo
         getline(dados_linha,dado,';');
         m_personagens[pos_id].persona_s.hp = stoi(dado);
 
@@ -125,7 +125,7 @@ class Vetor {
         arq.close();
 
     }
-    void atribui_itens(string &linhas_itens){
+    void atribui_itens(string &linhas_itens){//pega a linha de recebe itens e adiciona os itens daquela linha no vetor x
         stringstream dados_itens(linhas_itens);
         string dado;
         getline(dados_itens,dado,';');
@@ -140,7 +140,7 @@ class Vetor {
         getline(dados_itens,dado);
         m_personagens[pos_id_itens].inventario.acessorio = dado;
     }
-    void recebe_itens(){
+    void recebe_itens(){//le cada linha do arquivo dos itens para atribuir os itens de todo o vetor
         ifstream arq("./src/itens_fichas.txt");
         string linhas;
         if(!arq.is_open()){
@@ -152,7 +152,7 @@ class Vetor {
         }
         
     }
-    int gera_id(){
+    int gera_id(){//gera um id diferente de todos os existentes 
         if(m_personagens[0].id != 0){
             return 0;
         }else{
@@ -170,7 +170,7 @@ class Vetor {
     Vetor(personagem* personagens, int tamanho, int pos): m_personagens(personagens), m_tamanho(tamanho), position(pos) {}
 
     //escreve no arquivo a lista de jogadores serve tambem para quando fro atualizar o vetor e o arquivo em add e remover 
-    void escreve_lista(){
+    void escreve_lista(){//escreve os personagens no arquivo fichas .txt
         ofstream arq_atualizaso("./src/fichas.txt");
         for (int i = 0; i <position;i++){
             if(m_personagens[i].id >= 0){
@@ -187,7 +187,7 @@ class Vetor {
         }
         arq_atualizaso.close();
     }
-    void escreve_lista_status(){
+    void escreve_lista_status(){//escreve os atributos dos personagens em status fichas.txt
         ofstream aqr_status_a("./src/status_fichas.txt");
         for(int i = 0;i<position;i++){
             if(m_personagens[i].id >=0){
@@ -204,7 +204,7 @@ class Vetor {
         }
         aqr_status_a.close();
     }
-    void escreve_inv(){
+    void escreve_inv(){//escreve os itens dos vetores em itens fichas.txt
         ofstream arq_inv("./src/itens_fichas.txt");
         for(int i = 0;i<position;i++){
             if(m_personagens[i].id >= 0){
@@ -215,7 +215,7 @@ class Vetor {
             }
         }
     }
-    void sort_personagens(){
+    void sort_personagens(){//organiza os vetores por id
         personagem aux;
         for(int i = 0;i < position -1;i++){
 
@@ -233,28 +233,27 @@ class Vetor {
 
     //inicializa colocando todos os elementos do arquivo no vetor 
     void receba_(){
-        recebe();
-        recebe_status();
-        recebe_itens();
-        sort_personagens();
+        recebe();//coloca as fichas nos vetores personagens em fichas.txt
+        recebe_status();//coloca os atributos dos personagens em status_fichas
+        recebe_itens();//coloca os itens do status itens
+        sort_personagens();//organiza os vetores por id
     }
-    void escreve_arquivos(){
-        escreve_lista();
+    void escreve_arquivos(){//escreve os 3 arquivos em sequencia
+        escreve_lista();//
         escreve_lista_status();
         escreve_inv();
     }
-    void atualiza(){
+    void atualiza(){//escreve o vetor atualizado e recebe 
         escreve_arquivos();
         receba_();
-        cout << position;
     }
-    itens padrao_inv(itens inventario){
+    itens padrao_inv(itens inventario){//itens padrão para um novo jogador(pode editr dps se quiser)
         inventario.arma = "graveto";
         inventario.armadura = "fita curativa";
         inventario.acessorio ="moeda de prata";
         return(inventario);
     }
-    //status padarão (n sei se vou continuar com essa idaia)
+    //status padarão para um novo jogador pode mudar se quiser
     status padrao(status Spadrao){
         //status padrão de um novo personagem level 1 
         Spadrao.lv = 1;
@@ -267,12 +266,12 @@ class Vetor {
         return Spadrao;
     }
     //faz o cadastro de um novo jogador
-    personagem cadasdastro(){
+    personagem cadastro(){
         personagem novo_jogador;
         novo_jogador.id = gera_id();
         cout<<"digite o seu nome:";
         cin.ignore();
-        getline(cin >> ws,novo_jogador.nome);
+        getline(cin >> ws,novo_jogador.nome);//ws limpa o buffer assim a setença inteira é atribuida
 
         cout<<endl <<"digite o sua idade:";
         cin >> novo_jogador.idade;
@@ -296,7 +295,7 @@ class Vetor {
 
         while (novo_jogador.sexo != "f" and novo_jogador.sexo != "F" and 
                 novo_jogador.sexo != "m" and novo_jogador.sexo != "M" and 
-                novo_jogador.sexo != "n" and novo_jogador.sexo != "N")
+                novo_jogador.sexo != "n" and novo_jogador.sexo != "N")//verifica se é  um sexo valido uhhhh lacração 
         {
             cin >> novo_jogador.sexo;
         }
@@ -306,24 +305,24 @@ class Vetor {
     }
     //adiciona um jogador na lista do arquivo  e no vetor 
     void add_lista(){
-        personagem novo_personagem = cadasdastro();//faz o cadastro do novo personagem e retorna na variavel;
+        personagem novo_personagem = cadastro();//faz o cadastro do novo personagem e retorna na variavel;
         int ultimo_p = position;
-        if(position +1 >= m_tamanho ){
-            atualiza_vetor();
+        if(position +1 >= m_tamanho ){//verifica se o vetor está cheio
+            atualiza_vetor();//se estiver cheio atualiza os vetores;
             m_personagens[ultimo_p] = novo_personagem;
-        }else{
+        }else{//adiciona o novo personagem
             m_personagens[ultimo_p] = novo_personagem;
         }
-        position++;
-        sort_personagens();
-        escreve_arquivos();
+        position++;//aumenta a posição final
+        sort_personagens();//organiza os ids
+        escreve_arquivos();//reescreve os arquivos atualizado
     }
     //função para imprimir todos os jogadores funciona para o lista e remove 
     void imprime_jogadores() {
         system("clear");
-        system("cls");
+        system("cls");//limpa a tela
         cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#"<<endl;
-        
+        //printa na ordem a cima
         for(int i = 0;i < position;i++){
             if(m_personagens[i].id >= 0){
                 cout <<"|id: "<<m_personagens[i].id 
@@ -345,21 +344,20 @@ class Vetor {
         if(voltar >=0){
             cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
             cin >> voltar;
-            if (busca_id_SI(voltar) != -1){
-                detalhe_personagem(m_personagens[busca_id_SI(voltar)]);
-            }else{
+            if (busca_id_SI(voltar) != -1){//vai para tela do jogador mais detalhada
+                detalhe_personagem(m_personagens[busca_id_SI(voltar)]);//busca o id escolhido e detalha função em telas.hpp
+            }else{//se o jogador não existe ele volta ao menu
                 menu();
                 cout<<"personagem não encontrado";
             }
             
         }  
-        escreve_arquivos();
+        escreve_arquivos();//reescreve em caso de modificação 
             
     }
     //sistema de busca
-    // FAZER UM VERIFICADOR SE O ELEMENTO FOI ENCONTRADO E SE O ID É UM INTEIRO
     //imprime padrão para qualquer busca que o usuario quiser
-    void imprime_elem_esp(int x){
+    void imprime_elem_esp(int x){//imprime somente um elemento especifico
         cout <<"|id: "<<m_personagens[x].id 
         <<" |nome: "<< m_personagens[x].nome 
         <<" |classe: "<< m_personagens[x].classe 
@@ -436,16 +434,17 @@ class Vetor {
         if(!encontrado){
             cout << "jogador não encontrado"<<endl;
         }else{
+            //
             cout <<"deseja detallhar algum pernsonagem?[digite o id,se não digite -1]: ";
             cin >> detalhe;
-            if(detalhe != -1){
-                detalhe_personagem(m_personagens[busca_id_SI(detalhe)]);
-            }else{
+            if(detalhe >= 0){
+                detalhe_personagem(m_personagens[busca_id_SI(detalhe)]);//detlha o personagem que for escolhido no sistema de busca
+            }else{//verifica se deseha buscar outro
                 cout << "deseja buscar outro jogador(es) [s/n]: ";
                 cin >>outra_b;
             }
         }
-        
+        //se sim ele retorna ele mesmo
         if(outra_b == 's' || outra_b == 'S'){
             busca();
         }
@@ -454,21 +453,21 @@ class Vetor {
 
     //sistema para remover 
     void remove(){
-        int id_remove;
-        imprime_jogadores();
-        bool encontrado = false;
+        int id_remove;//digita do jogador para remover
+        imprime_jogadores();//imprime a lista de todos os jogadores
+        bool encontrado = false;//serve para saber se o jogador foi encontrado
         cout<<"digite o id do jogador que deseje remover:";
-        cin >> id_remove;
-        for(int i =0; i <= position;i++){
+        cin >> id_remove;//recebe o jogador para remover
+        for(int i =0; i <= position;i++){//procura o jogador
             if(m_personagens[i].id == id_remove){
-                m_personagens[i].id = -1;
-                encontrado = true;
+                m_personagens[i].id = -1;//atribui um valor neativo no id(o arquivo não le id negativos então ele some do arquivo)
+                encontrado = true;//encontrou o jogador
             }
         }
-        if(!encontrado){
+        if(!encontrado){//se não for encontrado ele avisa
             cout<<"jogador não encontrado"<<endl;
         }
-        atualiza();
+        atualiza();//atualiza o arquivo para eleminar de ambos(personagem some do arquivo e do vetor)
     }
 }; 
 

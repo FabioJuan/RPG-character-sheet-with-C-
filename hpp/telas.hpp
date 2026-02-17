@@ -51,6 +51,7 @@ void detalhe_personagem(personagem &p_detalhado){
     if(p_detalhado.sexo == "n"||p_detalhado.sexo == "N" ){
         //escolhe o arquivo muie
     }
+    //o que está ente parenteses é a esolha de caso queira editar algo 
     getline(arq,linha);//linha0
     cout<<linha<<endl;
     getline(arq,linha);//linha1
@@ -92,7 +93,7 @@ void detalhe_personagem(personagem &p_detalhado){
     {
         cout<<"você deseja editar algum atributo se não digite -1: ";
         cin >> editar;
-        edit(p_detalhado,editar);
+        edit(p_detalhado,editar);//função para modificar o personagem x
     }
     
       
