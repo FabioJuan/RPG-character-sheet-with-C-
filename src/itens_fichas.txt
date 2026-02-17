@@ -1,3 +1,7 @@
+0;graveto;fita curativa;moeda de prata
+1;graveto;fita curativa;moeda de prata
+2;graveto;fita curativa;moeda de prata
+3;facão cego;cocos secos;carteira de cigarro
 8;Espada Espada de Casull;Manto de Alucard;Anel de Prata;
 9;Espada de Prata;Armadura de Couro de Grifo;Medalhão do Lobo;
 10;Arco Galadhrim;Túnica de Mirkwood;Carcás de Flechas Infinitas;
@@ -57,4 +61,3 @@
 65;Arco Florestal;Armadura de Couro Élfico;Carcás de Flechas;
 66;Espada de Gondor;Armadura do Capitão;Manto de Ranger;
 67;Espada de Grama;Mochila Verde;Chapéu de Urso;
-68;graveto;fita curativa;moeda de prata;

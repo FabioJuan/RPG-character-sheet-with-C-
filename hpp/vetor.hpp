@@ -80,8 +80,7 @@ class Vetor {
                 return position_personagem;
             }
         }
-        cout << "personagem não encontrado";
-        return position_personagem;
+        return -1;
     }
     //atribui os status ara casa personagem
     void atrubui_status(string &linha_s){
@@ -153,6 +152,18 @@ class Vetor {
         }
         
     }
+    int gera_id(){
+        if(m_personagens[0].id != 0){
+            return 0;
+        }else{
+            for(int i = 0;i < position;i++){
+                if(m_personagens[i].id +1 != m_personagens[i+1].id){
+                    return m_personagens[i].id +1;
+                }
+            }
+        }
+        return m_personagens[position-1].id +1;
+    }
     
     
     public:
@@ -204,12 +215,28 @@ class Vetor {
             }
         }
     }
+    void sort_personagens(){
+        personagem aux;
+        for(int i = 0;i < position -1;i++){
+
+            for(int j = 0;j <position -i -1;j++){
+
+                if(m_personagens[j].id > m_personagens[j+1].id){
+                    aux = m_personagens[j];
+                    m_personagens[j] = m_personagens[j+1];
+                    m_personagens[j+1] = aux;
+                }
+            }
+            
+        }
+    }
 
     //inicializa colocando todos os elementos do arquivo no vetor 
     void receba_(){
         recebe();
         recebe_status();
         recebe_itens();
+        sort_personagens();
     }
     void escreve_arquivos(){
         escreve_lista();
@@ -219,6 +246,7 @@ class Vetor {
     void atualiza(){
         escreve_arquivos();
         receba_();
+        cout << position;
     }
     itens padrao_inv(itens inventario){
         inventario.arma = "graveto";
@@ -241,7 +269,7 @@ class Vetor {
     //faz o cadastro de um novo jogador
     personagem cadasdastro(){
         personagem novo_jogador;
-        novo_jogador.id = position;
+        novo_jogador.id = gera_id();
         cout<<"digite o seu nome:";
         cin.ignore();
         getline(cin,novo_jogador.nome);
@@ -287,11 +315,13 @@ class Vetor {
             m_personagens[ultimo_p] = novo_personagem;
         }
         position++;
+        sort_personagens();
         escreve_arquivos();
     }
     //função para imprimir todos os jogadores funciona para o lista e remove 
     void imprime_jogadores() {
         system("clear");
+        system("cls");
         cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#"<<endl;
         
         for(int i = 0;i < position;i++){
@@ -315,7 +345,13 @@ class Vetor {
         if(voltar >=0){
             cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
             cin >> voltar;
-            detalhe_personagem(m_personagens[busca_id_SI(voltar)],alterado);
+            if (busca_id_SI(voltar) != -1){
+                detalhe_personagem(m_personagens[busca_id_SI(voltar)]);
+            }else{
+                menu();
+                cout<<"personagem não encontrado";
+            }
+            
         }  
         escreve_arquivos();
             
@@ -335,56 +371,81 @@ class Vetor {
     }
 
     //busca por id
-    void busca_id(int elm_id){
+    bool busca_id(int elm_id){
         for(int i = 0;i < position;i++){
             if(elm_id == m_personagens[i].id){
                 imprime_elem_esp(i);
+                return true;
             }
         }
+        return false;
     }
     //busca por nome
-    void busca_nome(string elm_c){
+    bool busca_nome(string elm_c){
+        bool achou = false;
         for(int i = 0;i < position;i++){
             if(elm_c == m_personagens[i].nome){
                 imprime_elem_esp(i);
+                achou = true;
             }
         }
+        return achou;
     }
     //busca por classe
-    void busca_classe(string elm_c){
+    bool busca_classe(string elm_c){
+        bool achou = false;
         for(int i = 0;i < position;i++){
             if(elm_c == m_personagens[i].classe){
                 imprime_elem_esp(i);
+                achou = true;
             }
         }
+        return achou;
     }
     //busca por raça
-    void busca_raca(string elm_r){
+    bool busca_raca(string elm_r){
+        bool achou = false;
         for(int i = 0;i < position;i++){
-            if(elm_r == m_personagens[i].classe){
+            if(elm_r == m_personagens[i].raca){
                 imprime_elem_esp(i);
+                achou = true;
             }
         }
+        return achou;
     }
     void busca(){
         system("clear");
-        int escolha;
+        system("cls");
+        int escolha, detalhe;
         string busca_;
+        bool encontrado;
         char outra_b;
         cout<<"você deseja buscar por? \n"<<"(1)id\n"<<"(2)nome\n"<<"(3)classe\n"<<"(4)raça\n";
         cin>> escolha;
         system("clear");
+        system("cls");
         cout<< "digite o elemento que deseja buscar: ";
         cin.ignore();
         getline(cin,busca_);
         switch(escolha){
-            case 1:busca_id(stoi(busca_)); break;
-            case 2:busca_nome(busca_);break;
-            case 3:busca_classe(busca_); break;
-            case 4:busca_raca(busca_); break;
+            case 1:encontrado = busca_id(stoi(busca_)); break;
+            case 2:encontrado = busca_nome(busca_);break;
+            case 3:encontrado = busca_classe(busca_); break;
+            case 4:encontrado = busca_raca(busca_); break;
         }
-        cout << "deseja buscar outro jogador(es) [s/n]: ";
-        cin >>outra_b;
+        if(!encontrado){
+            cout << "jogador não encontrado"<<endl;
+        }else{
+            cout <<"deseja detallhar algum pernsonagem?[digite o id,se não digite -1]: ";
+            cin >> detalhe;
+            if(detalhe != -1){
+                detalhe_personagem(m_personagens[busca_id_SI(detalhe)]);
+            }else{
+                cout << "deseja buscar outro jogador(es) [s/n]: ";
+                cin >>outra_b;
+            }
+        }
+        
         if(outra_b == 's' || outra_b == 'S'){
             busca();
         }

@@ -16,6 +16,7 @@ int main(){
     personagem *jogadores = new personagem[n_jogadores];// vetor dimanico 
     Vetor personagens = Vetor(jogadores, n_jogadores, position);//o array jogadores recebe uma classe 
     personagens.receba_();
+    personagens.atualiza();
     cin >> tela;
     while (rodando)
     {

@@ -11,13 +11,14 @@ using namespace std;
 
 void menu(){
     system("clear");
+    system("cls");
         int tela = 0;
         const std::string titulo = "\
         _         _                                                           \n\
  __ _ _(_)__ _ __| |___ _ _    _ __  ___ _ _ ___ ___ _ _  __ _ __ _ ___ _ __  \n\
 / _| '_| / _` / _` / _ \\ '_|  | '_ \\/ -_) '_(_-</ _ \\ ' \\/ _` / _` / -_) '  \\ \n\
 \\__|_| |_\\__,_\\__,_\\___/_|    | .__/\\___|_| /__/\\___/_||_\\__,_\\__, \\___|_|_|_|\n\
-                               |_|                 _ _ _ __  __|___/           \n\
+                              |_|                 _ _ _ __  __|___/           \n\
                                                 | '_| '_ \\/ _` |             \n\
                                                 |_| | .__/\\__, |             \n\
                                                     |_|   |___/              \n\
@@ -31,8 +32,9 @@ void menu(){
         cout <<"                                (5)fechar progama"<<"\n";
 }
 
-void detalhe_personagem(personagem &p_detalhado,bool foi_alterado){
+void detalhe_personagem(personagem &p_detalhado){
     system("clear");
+    system("cls");
     ifstream arq;
     string linha;
     int editar;
@@ -88,9 +90,6 @@ void detalhe_personagem(personagem &p_detalhado,bool foi_alterado){
     {
         cout<<"você deseja editar algum atributo se não digite -1: ";
         cin >> editar;
-        if(edit(p_detalhado,editar)){
-            foi_alterado = true;
-        }
     }
     
       

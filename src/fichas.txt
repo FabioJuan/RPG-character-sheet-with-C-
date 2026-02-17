@@ -1,3 +1,7 @@
+0;fabio;progamador;umano;m;20;1;estando o sort
+1;vanel;arqueiro;lfo;m;29;1;obre e bobo
+2;viktor Tsoi;bardo;umano;M;28;1;ilosofia da maça fresca
+3;Mundico pé de coco;assasino;oqueiro;f;1423;1;raficante da propia especie
 8;Alucard;Vampiro;Andarilho;M;597;99;Procura um oponente digno. 
 9;Geralt;Bruxo;Mutante;M;95;50;Caçador de monstros profissional. 
 10;Legolas;Arqueiro;Elfo;M;2931;45;Mestre das flechas de precisão. 
@@ -57,4 +61,3 @@
 65;Tauriel;Guarda;Elfo;F;600;35;Capitã da guarda florestal. 
 66;Faramir;Capitão;Humano;M;36;40;Defensor fiel de Gondor. 
 67;Finn;Guerreiro;Humano;M;16;30;Aventureiro na terra de Ooo.
-
