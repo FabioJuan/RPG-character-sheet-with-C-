@@ -319,8 +319,7 @@ class Vetor {
     }
     //função para imprimir todos os jogadores funciona para o lista e remove 
     void imprime_jogadores() {
-        system("clear");
-        system("cls");//limpa a tela
+        limpa_tela();
         cout << "#id|#" << " #nome#"<<" #clase#"<<" #raça#"<<" #sexo#"<<" #idade#"<<" #descrição#"<<endl;
         //printa na ordem a cima
         for(int i = 0;i < position;i++){
@@ -412,41 +411,41 @@ class Vetor {
         return achou;
     }
     void busca(){
-        system("clear");
-        system("cls");
+        limpa_tela();
         int escolha, detalhe;
         string busca_;
         bool encontrado;
-        char outra_b;
-        cout<<"você deseja buscar por? \n"<<"(1)id\n"<<"(2)nome\n"<<"(3)classe\n"<<"(4)raça\n";
+        char outra_b = 'n';
+        cout<<"você deseja buscar por? \n"<<"(1)id\n"<<"(2)nome\n"<<"(3)classe\n"<<"(4)raça\n"<<"(n)voltar";
         cin>> escolha;
-        system("clear");
-        system("cls");
-        cout<< "digite o elemento que deseja buscar: ";
-        cin.ignore();
-        getline(cin,busca_);
-        switch(escolha){
-            case 1:encontrado = busca_id(stoi(busca_)); break;
-            case 2:encontrado = busca_nome(busca_);break;
-            case 3:encontrado = busca_classe(busca_); break;
-            case 4:encontrado = busca_raca(busca_); break;
-        }
-        if(!encontrado){
-            cout << "jogador não encontrado"<<endl;
-        }else{
-            //
-            cout <<"deseja detallhar algum pernsonagem?[digite o id,se não digite -1]: ";
-            cin >> detalhe;
-            if(detalhe >= 0){
-                detalhe_personagem(m_personagens[busca_id_SI(detalhe)]);//detlha o personagem que for escolhido no sistema de busca
-            }else{//verifica se deseha buscar outro
-                cout << "deseja buscar outro jogador(es) [s/n]: ";
-                cin >>outra_b;
+        limpa_tela();
+        if(escolha >=1 && escolha <=4){
+            cout<< "digite o elemento que deseja buscar: ";
+            cin.ignore();
+            getline(cin,busca_);
+            switch(escolha){
+                case 1:encontrado = busca_id(stoi(busca_)); break;
+                case 2:encontrado = busca_nome(busca_);break;
+                case 3:encontrado = busca_classe(busca_); break;
+                case 4:encontrado = busca_raca(busca_); break;
             }
-        }
-        //se sim ele retorna ele mesmo
-        if(outra_b == 's' || outra_b == 'S'){
-            busca();
+            if(!encontrado){
+                cout << "jogador não encontrado"<<endl;
+            }else{
+                //
+                cout <<"deseja detallhar algum pernsonagem?[digite o id,se não digite -1]: ";
+                cin >> detalhe;
+                if(detalhe >= 0){
+                    detalhe_personagem(m_personagens[busca_id_SI(detalhe)]);//detlha o personagem que for escolhido no sistema de busca
+                }else{//verifica se deseha buscar outro
+                    cout << "deseja buscar outro jogador(es) [s/n]: ";
+                    cin >>outra_b;
+                }
+            }
+            //se sim ele retorna ele mesmo
+            if(outra_b == 's' || outra_b == 'S'){
+                busca();
+            }
         }
     }
     //fim de sistema de busca

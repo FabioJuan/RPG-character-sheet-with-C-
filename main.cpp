@@ -22,24 +22,29 @@ int main(){
     {
         switch (tela)
         {
+
             case 1:
                 //adiciona personagens na lista
                 personagens.add_lista();
+                tela = 0;
                 break;
             case 2:
                 //remove
                 personagens.remove();
+                tela = 0;
                 break;
             case 3:
                 //busca
                 personagens.busca();
+                tela = 0;
                 break;
             case 4 :
                 //lista os personagens
                 personagens.lista_jogadores();
+                tela = 0;
                 break;
             case 5:
-                system("clear");
+                limpa_tela();
                 rodando = false;
                 break;
             default:

@@ -9,11 +9,16 @@
 
 using namespace std;
 
-
+void limpa_tela(){
+    if(system("cls")){
+        system("clear");
+    }else{
+        system("cls");
+    }
+}
 
 void menu(){
-    system("clear");
-    system("cls");
+    limpa_tela();
         int tela = 0;
         const std::string titulo = "\
         _         _                                                           \n\
@@ -35,8 +40,7 @@ void menu(){
 }
 
 void detalhe_personagem(personagem &p_detalhado){
-    system("clear");
-    system("cls");
+    limpa_tela();
     ifstream arq;
     string linha;
     int editar;
@@ -95,10 +99,8 @@ void detalhe_personagem(personagem &p_detalhado){
         cin >> editar;
         edit(p_detalhado,editar);//função para modificar o personagem x
     }
-    
-      
-
 }
+
 
 
 #endif
