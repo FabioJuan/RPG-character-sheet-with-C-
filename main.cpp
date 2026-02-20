@@ -1,3 +1,8 @@
+/*  progamação de computadoresI
+    Fabio Juan Tavares Amorim
+    Marcely Lopes dos anjos 
+    Luiz Henrique Mendes Costa
+*/
 #include <iostream>
 #include <fstream>
 #include <cstdlib>

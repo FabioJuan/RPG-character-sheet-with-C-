@@ -1,4 +1,4 @@
-0;sombrinha preta;fita curativa;notebook
+0;graveto;fita curativa;moeda de prata
 1;graveto;fita curativa;moeda de prata
 2;graveto;fita curativa;moeda de prata
 3;facão cego;cocos secos;carteira de cigarro
@@ -14,7 +14,6 @@
 13;Shusui e Wado Ichimonji;Roupão de Katanas;Haramaki de Combate;
 14;Bengala de Gimerstick;Manto do Conselho Jedi;Holocron da Força;
 15;Martelo da Perdição;Armadura de Placas de Orgrimmar;Totem Elemental;
-16;Zirael (Espada de Prata);Colete de Couro de Cintra;Ampulheta de Areia;
 17;Sabres de Luz Duplos;Traje de Padawan;Contas de Trança;
 18;Espada Mestra;Escudo Hylian;Ocarina do Tempo;
 19;Cetro de Galadriel;Vestido de Lothlórien;Frasco de Galadriel;
@@ -70,3 +69,5 @@
 69;teclado casio;uniforme escolar;morango roubado da mio
 70;baquetas;roupa padrão;conjunto de bateria
 71;muttan(guitarra);tiara de gato;pedal distortion
+72;graveto;fita curativa;moeda de prata
+73;arco ;fita curativa;moeda de prata

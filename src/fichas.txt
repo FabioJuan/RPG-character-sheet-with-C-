@@ -1,4 +1,4 @@
-0;fabio;progamador;Humano;m;20;1;Criador do personagens rpg
+0;vinicius;estudante;humano;M;18;1;apreciador de POO
 1;vanel;arqueiro;lfo;m;29;1;obre e bobo
 2;viktor Tsoi;bardo;umano;M;28;1;ilosofia da maça fresca
 3;Mundico pé de coco;assasino;oqueiro;f;1423;1;raficante da propia especie
@@ -14,7 +14,6 @@
 13;Zoro;Espadachim;Humano;M;21;60;Usa três espadas ao mesmo tempo. 
 14;Yoda;Mestre Jedi;Desconhecido;M;900;100;Pequeno em tamanho, gigante na Força. 
 15;Thrall;Xamã;Orc;M;32;70;Líder espiritual da Horda. 
-16;Ciri;Viajante;Humana;F;21;40;Herdeira do Sangue Antigo. 
 17;Ahsoka;Padawan;Togruta;F;17;35;Guerreira ágil com sabres duplos. 
 18;Link;Herói;Hylian;M;117;40;Portador da Espada Mestra. 
 19;Galadriel;Maga;Elfo;F;7000;90;Senhora da luz e sabedoria. 
@@ -70,3 +69,5 @@
 69;Tsumugi Kotobuki;Tecladista;Humana;F;18;1;me divirto com minhas amigas
 70;Ritsu Tainaka;Baterista;Humana;F;18;1;entrar no tempo é dificil...
 71;Azusa;Guitarrista;Humana;F;17;1;praticar praticar praticar
+72;Marcely;humano;bruxa;f;27;1;possui conhecimentos ancestrais mas é pobre
+73;laucian liadon;mago de batalha;alto elfo da lua;m;149;1;um elfo da lua que saiu em busca de adquirir novas aventuras e conhescimento

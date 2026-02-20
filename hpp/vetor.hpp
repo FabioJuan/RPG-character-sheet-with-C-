@@ -6,6 +6,7 @@
 #include <sstream>
 #include "personagens.hpp"
 #include "telas.hpp"
+#include <algorithm>
 
 using namespace std;
 
@@ -165,7 +166,10 @@ class Vetor {
         return m_personagens[position-1].id +1;
     }
     
-    
+    string lower_(string text){
+        transform(text.begin(),text.end(),text.begin(), ::tolower);
+        return text;
+    }
     public:
     Vetor(personagem* personagens, int tamanho, int pos): m_personagens(personagens), m_tamanho(tamanho), position(pos) {}
 
@@ -324,7 +328,7 @@ class Vetor {
         //printa na ordem a cima
         for(int i = 0;i < position;i++){
             if(m_personagens[i].id >= 0){
-                cout <<"|id: "<<m_personagens[i].id 
+                cout <<endl<<"|id: "<<m_personagens[i].id 
                 <<" |nome: "<< m_personagens[i].nome 
                 <<" |classe: "<< m_personagens[i].classe 
                 <<" |raça: "<< m_personagens[i].raca
@@ -377,11 +381,25 @@ class Vetor {
         }
         return false;
     }
+    bool busca_intervalo(){
+        int x, y;
+        cout<< "digite o intervalo que deseja (ex x = 10 y = 20)";
+        cin >> x >> y;
+        if(y < position && (x < y && (x > 0 && y > 0))){
+            for(int i = x;i<=y;i++){
+                imprime_elem_esp(i);
+            }
+            return true;
+        }else{
+            cout<< "intervalo invalido"<<endl;
+            return false;
+        }
+    }
     //busca por nome
     bool busca_nome(string elm_c){
         bool achou = false;
         for(int i = 0;i < position;i++){
-            if(elm_c == m_personagens[i].nome){
+            if(lower_(elm_c) == lower_(m_personagens[i].nome)){
                 imprime_elem_esp(i);
                 achou = true;
             }
@@ -392,7 +410,7 @@ class Vetor {
     bool busca_classe(string elm_c){
         bool achou = false;
         for(int i = 0;i < position;i++){
-            if(elm_c == m_personagens[i].classe){
+            if(lower_(elm_c) == lower_(m_personagens[i].classe)){
                 imprime_elem_esp(i);
                 achou = true;
             }
@@ -403,7 +421,7 @@ class Vetor {
     bool busca_raca(string elm_r){
         bool achou = false;
         for(int i = 0;i < position;i++){
-            if(elm_r == m_personagens[i].raca){
+            if(lower_(elm_r) == lower_(m_personagens[i].raca)){
                 imprime_elem_esp(i);
                 achou = true;
             }
@@ -413,26 +431,43 @@ class Vetor {
     void busca(){
         limpa_tela();
         int escolha, detalhe;
+        int x,y;
         string busca_;
         bool encontrado;
         char outra_b = 'n';
-        cout<<"você deseja buscar por? \n"<<"(1)id\n"<<"(2)nome\n"<<"(3)classe\n"<<"(4)raça\n"<<"(n)voltar";
+        cout<<"você deseja buscar por? \n"<<"(1)id\n"<<"(2)nome\n"<<"(3)classe\n"<<"(4)raça\n"<<"(5)busca por intervalo do vetor\nqualquer tra tecla para voltar;";
         cin>> escolha;
         limpa_tela();
-        if(escolha >=1 && escolha <=4){
-            cout<< "digite o elemento que deseja buscar: ";
-            cin.ignore();
-            getline(cin,busca_);
+        if(escolha >=1 && escolha <=5){
+
             switch(escolha){
-                case 1:encontrado = busca_id(stoi(busca_)); break;
-                case 2:encontrado = busca_nome(busca_);break;
-                case 3:encontrado = busca_classe(busca_); break;
-                case 4:encontrado = busca_raca(busca_); break;
+                case 1:cout<< "digite o elemento que deseja buscar: ";
+                        cin.ignore();
+                        getline(cin,busca_);
+                        encontrado = busca_id(stoi(busca_)); 
+                    break;
+                case 2:cout<< "digite o elemento que deseja buscar: ";
+                        cin.ignore();
+                        getline(cin,busca_);
+                        encontrado = busca_nome(busca_);
+                    break;
+                case 3: cout<< "digite o elemento que deseja buscar: ";
+                        cin.ignore();
+                        getline(cin,busca_);
+                        encontrado = busca_classe(busca_);
+                    break;
+                case 4:cout<< "digite o elemento que deseja buscar: ";
+                        cin.ignore();
+                        getline(cin,busca_);
+                        encontrado = busca_raca(busca_);
+                    break;
+                case 5:encontrado = busca_intervalo();
             }
-            if(!encontrado){
+            if(!encontrado ){
                 cout << "jogador não encontrado"<<endl;
             }else{
                 //
+
                 cout <<"deseja detallhar algum pernsonagem?[digite o id,se não digite -1]: ";
                 cin >> detalhe;
                 if(detalhe >= 0){
@@ -466,6 +501,8 @@ class Vetor {
         if(!encontrado){//se não for encontrado ele avisa
             cout<<"jogador não encontrado"<<endl;
         }
+        position --;
+        cout<< position<<endl;
         atualiza();//atualiza o arquivo para eleminar de ambos(personagem some do arquivo e do vetor)
     }
 }; 
