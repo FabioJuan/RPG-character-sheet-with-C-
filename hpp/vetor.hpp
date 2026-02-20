@@ -16,6 +16,27 @@ class Vetor {
     int m_tamanho  = 20;//parametro do tamanho
     int position = 0 ;//posição atual do vetor 
 
+    //laço de repetição para validação de tipo de entrada equivalente a variavel
+    int getInt(const string& erro){
+        int valor;
+
+        while(true){
+            cin>>valor;
+            //se dado de entrada falhou
+            if(cin.fail()){
+                cout<<erro<<endl;
+                //limpa os erros
+                cin.clear();
+                //ignora os caracteres do buffer de entrada e repete o laço
+                cin.ignore(1000,'\n');
+            } else {
+                //ignora os caracteres do buffer de entrada e retorna valor
+                cin.ignore(1000,'\n');
+                return valor;
+            }
+        }
+    };
+
     personagem atribui_x( string &linha){
         personagem personaI;
         stringstream linhaI(linha);
@@ -278,7 +299,7 @@ class Vetor {
         getline(cin >> ws,novo_jogador.nome);//ws limpa o buffer assim a setença inteira é atribuida
 
         cout<<endl <<"digite o sua idade:";
-        cin >> novo_jogador.idade;
+        novo_jogador.idade=getInt("Erro, entrada invalida! \nDigite a idade: ");
 
         cout<<endl<<"digite o sua classe:";
         //cin.ignore();
@@ -343,9 +364,9 @@ class Vetor {
     void lista_jogadores(){
         bool alterado = false;
         imprime_jogadores();
-        int voltar = 0;
+        cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
+        int voltar = getInt("Erro, entrada invalida! \nDigite um id, senão digite -1: ");
         if(voltar >=0){
-            cout<<"escolha o jogador que deseja detalhar pelo id, senão digite -1:";
             cin >> voltar;
             if (busca_id_SI(voltar) != -1){//vai para tela do jogador mais detalhada
                 detalhe_personagem(m_personagens[busca_id_SI(voltar)]);//busca o id escolhido e detalha função em telas.hpp
@@ -382,7 +403,8 @@ class Vetor {
         return false;
     }
     bool busca_intervalo(){
-        int x, y;
+        int x=getInt("Erro, entrada invalida! Digite um valor para x: ");
+        int y=getInt("Erro, entrada invalida! Digite um valor para y: ");
         cout<< "digite o intervalo que deseja (ex x = 10 y = 20)";
         cin >> x >> y;
         if(y < position && (x < y && (x > 0 && y > 0))){
@@ -436,8 +458,8 @@ class Vetor {
         string busca_;
         bool encontrado;
         char outra_b = 'n';
-        cout<<"você deseja buscar por? \n"<<"(1)id\n"<<"(2)nome\n"<<"(3)classe\n"<<"(4)raça\n"<<"(5)busca por intervalo do vetor\nqualquer tra tecla para voltar;";
-        cin>> escolha;
+        cout<<"você deseja buscar por? \n"<<"(1)id\n"<<"(2)nome\n"<<"(3)classe\n"<<"(4)raça\n"<<"(5)busca por intervalo do vetor\n(-1)voltar";
+        escolha=getInt("Erro, entrada invalida! \nDigite \n(1)id\n(2)nome\n(3)classe\n(4)raça\n(5)busca por intervalo do vetor\n(-1)voltar");
         limpa_tela();
         if(escolha >=1 && escolha <=5){
 
@@ -469,7 +491,7 @@ class Vetor {
             }else{
                 //
 
-                cout <<"deseja detallhar algum pernsonagem?[digite o id,se não digite -1]: ";
+                cout <<"deseja detalhar algum pernsonagem?[digite o id,se não digite -1]: ";
                 cin >> detalhe;
                 if(detalhe >= 0){
                     detalhe_personagem(m_personagens[busca_id_SI(detalhe)]);//detlha o personagem que for escolhido no sistema de busca
@@ -482,6 +504,8 @@ class Vetor {
             if(outra_b == 's' || outra_b == 'S'){
                 busca();
             }
+        } else if (escolha==-1){
+            menu();
         }
     }
     //fim de sistema de busca
@@ -492,7 +516,7 @@ class Vetor {
         imprime_jogadores();//imprime a lista de todos os jogadores
         bool encontrado = false;//serve para saber se o jogador foi encontrado
         cout<<"digite o id do jogador que deseje remover:";
-        cin >> id_remove;//recebe o jogador para remover
+        id_remove=getInt("Erro, entrada invalida! Digite um numero valido:");//recebe o jogador para remover
         for(int i =0; i <= position;i++){//procura o jogador
             if(m_personagens[i].id == id_remove){
                 m_personagens[i].id = -1;//atribui um valor neativo no id(o arquivo não le id negativos então ele some do arquivo)
