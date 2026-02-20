@@ -392,6 +392,7 @@ class Vetor {
             return true;
         }else{
             cout<< "intervalo invalido"<<endl;
+            
             return false;
         }
     }
